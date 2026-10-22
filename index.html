@@ -1,0 +1,3940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura Wealth | Boutique Stock Intelligence & Private Wealth Stewardship</title>
+  <meta name="description" content="Aura Wealth is a bespoke equity intelligence terminal and private wealth platform engineered for sovereign capital, family offices, and discerning investors.">
+
+  <!-- Google Fonts: Cormorant Garamond for luxury serif + Plus Jakarta Sans for refined sans + JetBrains Mono for financial precision -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       AURA WEALTH DESIGN SYSTEM - QUIET LUXURY PALETTE
+       ========================================================================== */
+    :root {
+      /* Backgrounds */
+      --bg-base: #FAF8F5;          /* Warm porcelain ivory cream */
+      --bg-surface: #FFFFFF;       /* Pure white container cards */
+      --bg-surface-alt: #F6F3EE;   /* Soft warm tinted card */
+      --bg-elevated: #FDFCFA;      /* Subtle elevated panel */
+      --bg-frosted: rgba(250, 248, 245, 0.88);
+
+      /* Deep Plum / Aubergine Accents */
+      --plum-900: #240711;        /* Midnight plum */
+      --plum-800: #340C1A;        /* Deep imperial aubergine */
+      --plum-700: #4A1525;        /* Signature Aura plum */
+      --plum-600: #621D32;        /* Vibrant wine plum */
+      --plum-500: #7A2740;        /* Plum highlight */
+      --plum-100: #F7EAEF;        /* Delicate plum tint */
+      --plum-50:  #FAF2F5;        /* Gossamer plum wash */
+
+      /* Warm Terracotta & Champagne Gold */
+      --gold-700: #8C6A3E;        /* Deep antique gold */
+      --gold-600: #A8834F;        /* Classic warm gold */
+      --gold-500: #C5A880;        /* Champagne gold highlight */
+      --gold-400: #D8BF9D;        /* Soft gold */
+      --gold-100: #F7F1E7;        /* Subtle champagne glow */
+      --terracotta: #A85A42;      /* Earthy terracotta highlight */
+      --terracotta-soft: #F9EFE9; /* Terracotta background tint */
+
+      /* Typography & Neutral Slate */
+      --text-heading: #1C1917;    /* Deep ebony charcoal */
+      --text-body: #3C3734;       /* Slate charcoal */
+      --text-muted: #726B66;      /* Muted stone grey */
+      --text-subtle: #A39B95;     /* Whisper grey */
+      --border-subtle: rgba(74, 21, 37, 0.08);
+      --border-refined: rgba(74, 21, 37, 0.12);
+      --border-gold: rgba(197, 168, 128, 0.35);
+
+      /* Market Financial Indicators (Refined, non-garish) */
+      --market-up: #1D6B48;       /* British racing green / British emerald */
+      --market-up-bg: rgba(29, 107, 72, 0.08);
+      --market-down: #9E2A2B;     /* Tuscan garnet wine */
+      --market-down-bg: rgba(158, 42, 43, 0.08);
+
+      /* Typography Tokens */
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      /* Luxury Shadows & Radii */
+      --shadow-sm: 0 2px 8px -2px rgba(52, 12, 26, 0.04), 0 1px 3px -1px rgba(0, 0, 0, 0.02);
+      --shadow-md: 0 8px 24px -4px rgba(52, 12, 26, 0.06), 0 2px 8px -1px rgba(0, 0, 0, 0.02);
+      --shadow-lg: 0 16px 40px -8px rgba(52, 12, 26, 0.08), 0 4px 12px -2px rgba(0, 0, 0, 0.03);
+      --shadow-plum: 0 12px 32px -6px rgba(74, 21, 37, 0.22);
+      
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
+
+      --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Reset & Base Styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      background-color: var(--bg-base);
+      color: var(--text-body);
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-base);
+      color: var(--text-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* Luxury Hairline Grain / Gradient Overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 999;
+      background: radial-gradient(circle at 15% 10%, rgba(197, 168, 128, 0.05), transparent 45%),
+                  radial-gradient(circle at 85% 65%, rgba(74, 21, 37, 0.03), transparent 50%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: var(--transition-smooth);
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+      outline: none;
+    }
+
+    input, select {
+      font-family: inherit;
+      outline: none;
+    }
+
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* ==========================================================================
+       1. TOP ANNOUNCEMENT BAR
+       ========================================================================== */
+    .top-bar {
+      background: linear-gradient(90deg, #1F050D 0%, #340C1A 50%, #240711 100%);
+      color: #FAF5F0;
+      font-size: 0.8125rem;
+      letter-spacing: 0.02em;
+      border-bottom: 1px solid rgba(197, 168, 128, 0.2);
+      position: relative;
+      z-index: 100;
+      transition: var(--transition-smooth);
+    }
+
+    .top-bar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 40px;
+      padding: 6px 0;
+      gap: 16px;
+    }
+
+    .top-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .status-badge-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(197, 168, 128, 0.15);
+      border: 1px solid rgba(197, 168, 128, 0.35);
+      color: #EEDBBE;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 2px 9px;
+      border-radius: var(--radius-full);
+    }
+
+    .pulse-dot {
+      width: 6px;
+      height: 6px;
+      background-color: #38D394;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #38D394;
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.3); opacity: 0.7; }
+    }
+
+    .top-bar-headline {
+      color: rgba(250, 245, 240, 0.9);
+      font-weight: 400;
+    }
+
+    .top-bar-headline strong {
+      color: #F1DDBF;
+      font-weight: 600;
+    }
+
+    .top-bar-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-shrink: 0;
+    }
+
+    .currency-select-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: rgba(250, 245, 240, 0.75);
+      font-size: 0.75rem;
+    }
+
+    .currency-select {
+      background: rgba(255, 255, 255, 0.08);
+      color: #FAF5F0;
+      border: 1px solid rgba(197, 168, 128, 0.25);
+      border-radius: 6px;
+      font-size: 0.75rem;
+      padding: 2px 6px;
+      cursor: pointer;
+    }
+
+    .currency-select option {
+      background: #340C1A;
+      color: #FAF5F0;
+    }
+
+    .top-bar-concierge {
+      color: #E5CDAC;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+    }
+
+    .top-bar-concierge:hover {
+      color: #FFFFFF;
+      text-decoration: underline;
+    }
+
+    .top-bar-close {
+      color: rgba(250, 245, 240, 0.5);
+      font-size: 1.1rem;
+      line-height: 1;
+      padding: 2px;
+      transition: color 0.2s;
+    }
+
+    .top-bar-close:hover {
+      color: #FFFFFF;
+    }
+
+    /* ==========================================================================
+       2. HEADER NAVIGATION
+       ========================================================================== */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 90;
+      background-color: var(--bg-frosted);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: var(--transition-smooth);
+    }
+
+    .site-header.scrolled {
+      box-shadow: 0 4px 20px rgba(52, 12, 26, 0.04);
+      background-color: rgba(250, 248, 245, 0.95);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 78px;
+    }
+
+    /* Minimalist Luxury Brand Logo */
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      border: 1.5px solid var(--gold-600);
+      background: linear-gradient(135deg, #340C1A 0%, #1F050D 100%);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition-smooth);
+    }
+
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      inset: 2px;
+      border: 1px solid rgba(197, 168, 128, 0.4);
+      border-radius: 7px;
+      pointer-events: none;
+    }
+
+    .brand-logo:hover .brand-mark {
+      transform: translateY(-1px);
+      border-color: var(--gold-500);
+      box-shadow: var(--shadow-md);
+    }
+
+    .brand-mark svg {
+      width: 22px;
+      height: 22px;
+      fill: none;
+      stroke: #EEDABE;
+      stroke-width: 1.6;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-family: var(--font-serif);
+      font-size: 1.45rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--plum-800);
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+
+    .brand-subline {
+      font-family: var(--font-sans);
+      font-size: 0.625rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-700);
+      font-weight: 600;
+    }
+
+    /* Navigation Links */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-body);
+      letter-spacing: 0.02em;
+      position: relative;
+      padding: 6px 0;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 1.5px;
+      background-color: var(--plum-700);
+      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), left 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .nav-link:hover {
+      color: var(--plum-700);
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+      left: 0;
+    }
+
+    /* Header Actions */
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .btn-search-trigger {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-surface-alt);
+      border: 1px solid var(--border-refined);
+      border-radius: var(--radius-full);
+      padding: 8px 14px;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      transition: var(--transition-smooth);
+    }
+
+    .btn-search-trigger:hover {
+      border-color: var(--gold-500);
+      color: var(--text-heading);
+      background: #FFFFFF;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .kbd-shortcut {
+      background: rgba(74, 21, 37, 0.06);
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      padding: 1px 5px;
+      font-size: 0.6875rem;
+      font-family: var(--font-mono);
+      color: var(--plum-700);
+    }
+
+    /* Pill-shaped plum CTA button */
+    .btn-portal {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      background: linear-gradient(135deg, var(--plum-800) 0%, var(--plum-700) 100%);
+      color: #FAF5F0;
+      border: 1px solid rgba(197, 168, 128, 0.3);
+      padding: 10px 22px;
+      border-radius: var(--radius-full);
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      box-shadow: 0 4px 14px rgba(74, 21, 37, 0.18);
+      transition: var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-portal::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+      transition: 0.5s;
+    }
+
+    .btn-portal:hover {
+      transform: translateY(-1.5px);
+      box-shadow: 0 6px 20px rgba(74, 21, 37, 0.28);
+      border-color: var(--gold-500);
+      color: #FFFFFF;
+    }
+
+    .btn-portal:hover::before {
+      left: 100%;
+    }
+
+    .btn-portal svg {
+      width: 16px;
+      height: 16px;
+      stroke: #EEDABE;
+      fill: none;
+    }
+
+    /* Mobile Menu Toggle */
+    .mobile-menu-btn {
+      display: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      border: 1px solid var(--border-refined);
+      align-items: center;
+      justify-content: center;
+      color: var(--plum-800);
+    }
+
+    /* ==========================================================================
+       3. HERO SECTION
+       ========================================================================== */
+    .hero-section {
+      position: relative;
+      padding: 84px 0 64px 0;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-ornament-left, .hero-ornament-right {
+      position: absolute;
+      top: 50%;
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(80px);
+      opacity: 0.45;
+      z-index: 0;
+    }
+
+    .hero-ornament-left {
+      left: -120px;
+      background: radial-gradient(circle, rgba(197, 168, 128, 0.3) 0%, transparent 70%);
+    }
+
+    .hero-ornament-right {
+      right: -120px;
+      background: radial-gradient(circle, rgba(74, 21, 37, 0.15) 0%, transparent 70%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .hero-tagline-wrapper {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-gold);
+      padding: 6px 18px;
+      border-radius: var(--radius-full);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 24px;
+    }
+
+    .hero-tagline-wrapper svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--gold-600);
+      fill: none;
+    }
+
+    .hero-tagline {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--plum-800);
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 5.2vw, 4.3rem);
+      font-weight: 500;
+      line-height: 1.08;
+      color: var(--plum-900);
+      letter-spacing: -0.015em;
+      margin-bottom: 22px;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--gold-700);
+    }
+
+    .hero-subheadline {
+      font-size: clamp(1rem, 1.3vw, 1.1875rem);
+      color: var(--text-muted);
+      max-width: 720px;
+      margin: 0 auto 36px auto;
+      line-height: 1.65;
+      font-weight: 400;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 56px;
+    }
+
+    .btn-hero-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--plum-800);
+      color: #FAF5F0;
+      border: 1px solid rgba(197, 168, 128, 0.4);
+      padding: 14px 32px;
+      border-radius: var(--radius-full);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      box-shadow: var(--shadow-plum);
+      transition: var(--transition-smooth);
+    }
+
+    .btn-hero-primary:hover {
+      background: var(--plum-700);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px -6px rgba(74, 21, 37, 0.35);
+      border-color: var(--gold-400);
+    }
+
+    .btn-hero-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #FFFFFF;
+      color: var(--plum-800);
+      border: 1px solid var(--border-refined);
+      padding: 14px 28px;
+      border-radius: var(--radius-full);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition-smooth);
+    }
+
+    .btn-hero-secondary:hover {
+      background: var(--bg-surface-alt);
+      border-color: var(--gold-500);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Trust & Metrics Ribbon */
+    .hero-stats-ribbon {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-refined);
+      border-radius: var(--radius-lg);
+      padding: 24px 32px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+
+    .hero-stats-ribbon::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold-500), transparent);
+    }
+
+    .stat-item {
+      text-align: center;
+      position: relative;
+    }
+
+    .stat-item:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 15%;
+      height: 70%;
+      width: 1px;
+      background: var(--border-subtle);
+    }
+
+    .stat-number {
+      font-family: var(--font-serif);
+      font-size: 2.1rem;
+      font-weight: 600;
+      color: var(--plum-800);
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       4. INTERACTIVE STOCK TICKER & MARKET OVERVIEW
+       ========================================================================== */
+    .section-market-overview {
+      padding: 40px 0 64px 0;
+    }
+
+    .section-header-flex {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .section-title-wrap {
+      max-width: 620px;
+    }
+
+    .section-pretitle {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold-700);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: 2.25rem;
+      font-weight: 600;
+      color: var(--plum-900);
+      line-height: 1.15;
+    }
+
+    .section-subtitle {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    .market-timeframe-controls {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: #FFFFFF;
+      padding: 4px;
+      border: 1px solid var(--border-refined);
+      border-radius: var(--radius-full);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-tf {
+      padding: 5px 14px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: var(--radius-full);
+      color: var(--text-muted);
+      transition: var(--transition-smooth);
+    }
+
+    .btn-tf.active, .btn-tf:hover {
+      background: var(--plum-800);
+      color: #FAF5F0;
+    }
+
+    /* Indices Grid */
+    .indices-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .index-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-refined);
+      border-radius: var(--radius-md);
+      padding: 22px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition-smooth);
+      position: relative;
+      cursor: pointer;
+    }
+
+    .index-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--gold-500);
+    }
+
+    .index-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .index-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .index-symbol {
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--gold-700);
+      letter-spacing: 0.05em;
+    }
+
+    .index-name {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--plum-900);
+      margin-top: 2px;
+    }
+
+    .badge-change {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 600;
+      font-family: var(--font-mono);
+    }
+
+    .badge-change.positive {
+      background-color: var(--market-up-bg);
+      color: var(--market-up);
+      border: 1px solid rgba(29, 107, 72, 0.2);
+    }
+
+    .badge-change.negative {
+      background-color: var(--market-down-bg);
+      color: var(--market-down);
+      border: 1px solid rgba(158, 42, 43, 0.2);
+    }
+
+    .index-price-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .index-price {
+      font-family: var(--font-mono);
+      font-size: 1.625rem;
+      font-weight: 600;
+      color: var(--text-heading);
+      letter-spacing: -0.02em;
+    }
+
+    .index-tick-pulse {
+      display: inline-block;
+      transition: background-color 0.4s ease, color 0.4s ease;
+      padding: 0 4px;
+      border-radius: 4px;
+    }
+
+    .tick-up {
+      background-color: rgba(29, 107, 72, 0.18) !important;
+      color: var(--market-up) !important;
+    }
+
+    .tick-down {
+      background-color: rgba(158, 42, 43, 0.18) !important;
+      color: var(--market-down) !important;
+    }
+
+    .index-range-bar {
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .range-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.6875rem;
+      color: var(--text-subtle);
+      font-family: var(--font-mono);
+    }
+
+    .range-track {
+      height: 3px;
+      background: var(--bg-surface-alt);
+      border-radius: 2px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .range-fill {
+      position: absolute;
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold-500), var(--plum-600));
+      border-radius: 2px;
+    }
+
+    /* Sparkline SVG styling */
+    .sparkline-svg {
+      width: 100%;
+      height: 48px;
+      overflow: visible;
+    }
+
+    /* ==========================================================================
+       5. WATCHLIST / ASSET SCREENER DASHBOARD
+       ========================================================================== */
+    .section-screener {
+      padding: 60px 0;
+    }
+
+    .screener-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-refined);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+    }
+
+    /* Screener Controls Bar */
+    .screener-header {
+      padding: 24px 28px;
+      border-bottom: 1px solid var(--border-subtle);
+      background: linear-gradient(180deg, #FFFFFF 0%, #FAF8F5 100%);
+    }
+
+    .screener-controls-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .screener-search-wrapper {
+      position: relative;
+      flex: 1;
+      min-width: 260px;
+      max-width: 420px;
+    }
+
+    .screener-search-input {
+      width: 100%;
+      padding: 10px 16px 10px 42px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-refined);
+      border-radius: var(--radius-full);
+      font-size: 0.875rem;
+      color: var(--text-heading);
+      transition: var(--transition-smooth);
+    }
+
+    .screener-search-input:focus {
+      border-color: var(--gold-600);
+      box-shadow: 0 0 0 3px rgba(197, 168, 128, 0.2);
+    }
+
+    .search-icon-inside {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      stroke: var(--text-muted);
+      fill: none;
+    }
+
+    .screener-actions-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-sim-stream {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-refined);
+      border-radius: var(--radius-full);
+      padding: 8px 16px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--plum-800);
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-sim-stream.active {
+      background: var(--plum-50);
+      border-color: var(--plum-700);
+      color: var(--plum-800);
+    }
+
+    .btn-sim-stream:hover {
+      border-color: var(--gold-500);
+    }
+
+    /* Category Pill Filter Tabs */
+    .sector-tabs-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      scrollbar-width: none;
+    }
+    .sector-tabs-wrap::-webkit-scrollbar { display: none; }
+
+    .sector-tab {
+      padding: 6px 16px;
+      border-radius: var(--radius-full);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      white-space: nowrap;
+      transition: var(--transition-smooth);
+    }
+
+    .sector-tab:hover {
+      color: var(--plum-800);
+      border-color: var(--gold-500);
+    }
+
+    .sector-tab.active {
+      background: var(--plum-800);
+      color: #FAF5F0;
+      border-color: var(--plum-800);
+      font-weight: 600;
+    }
+
+    /* Table Layout */
+    .screener-table-container {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    .screener-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.875rem;
+    }
+
+    .screener-table th {
+      padding: 14px 20px;
+      background: #FAF8F5;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border-refined);
+      white-space: nowrap;
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.2s;
+    }
+
+    .screener-table th:hover {
+      color: var(--plum-800);
+    }
+
+    .th-sort-icon {
+      display: inline-block;
+      margin-left: 4px;
+      opacity: 0.4;
+      font-size: 0.75rem;
+    }
+
+    .screener-table td {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border-subtle);
+      vertical-align: middle;
+      color: var(--text-body);
+      white-space: nowrap;
+      transition: background-color 0.2s ease;
+    }
+
+    .screener-table tr:hover td {
+      background-color: #FAF7F2;
+    }
+
+    .cell-star {
+      width: 36px;
+      padding-right: 0 !important;
+    }
+
+    .star-btn {
+      color: var(--text-subtle);
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .star-btn:hover {
+      transform: scale(1.2);
+      color: var(--gold-600);
+    }
+
+    .star-btn.starred {
+      color: #D4AF37;
+    }
+
+    .asset-cell {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .asset-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-serif);
+      font-weight: 700;
+      font-size: 0.9375rem;
+      background: #F4EFEA;
+      color: var(--plum-800);
+      border: 1px solid var(--border-gold);
+      flex-shrink: 0;
+    }
+
+    .asset-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .asset-symbol {
+      font-family: var(--font-mono);
+      font-weight: 600;
+      color: var(--plum-900);
+      font-size: 0.875rem;
+    }
+
+    .asset-name {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .font-mono-num {
+      font-family: var(--font-mono);
+      font-weight: 500;
+    }
+
+    .aura-score-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 9px;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 600;
+      font-family: var(--font-mono);
+      background: #F5EFEB;
+      color: var(--plum-800);
+      border: 1px solid var(--border-gold);
+    }
+
+    .screener-row-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 5px 12px;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--plum-800);
+      border: 1px solid var(--border-refined);
+      background: #FFFFFF;
+      transition: var(--transition-smooth);
+    }
+
+    .screener-row-action:hover {
+      background: var(--plum-800);
+      color: #FAF5F0;
+      border-color: var(--plum-800);
+    }
+
+    /* Screener Footer */
+    .screener-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 28px;
+      background: #FAF8F5;
+      border-top: 1px solid var(--border-subtle);
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       6. PORTFOLIO PERFORMANCE VISUALIZER
+       ========================================================================== */
+    .section-portfolio {
+      padding: 60px 0;
+      background: linear-gradient(180deg, transparent 0%, rgba(74, 21, 37, 0.02) 100%);
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 24px;
+      margin-top: 32px;
+    }
+
+    @media (max-width: 992px) {
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .portfolio-chart-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-refined);
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+
+    .portfolio-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .portfolio-meta-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-700);
+      margin-bottom: 4px;
+    }
+
+    .portfolio-val-large {
+      font-family: var(--font-serif);
+      font-size: 2.75rem;
+      font-weight: 600;
+      color: var(--plum-900);
+      line-height: 1.1;
+    }
+
+    .portfolio-gain-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.875rem;
+      font-family: var(--font-mono);
+      font-weight: 600;
+      color: var(--market-up);
+      margin-top: 4px;
+    }
+
+    .portfolio-strategy-selector {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--bg-surface-alt);
+      border: 1px solid var(--border-refined);
+      border-radius: var(--radius-full);
+      padding: 3px;
+    }
+
+    .btn-strategy {
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: var(--transition-smooth);
+    }
+
+    .btn-strategy.active {
+      background: var(--plum-800);
+      color: #FAF5F0;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* SVG Performance Chart */
+    .chart-svg-wrap {
+      width: 100%;
+      height: 290px;
+      position: relative;
+    }
+
+    .chart-legend {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 20px;
+      margin-top: 16px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .legend-line {
+      width: 16px;
+      height: 2.5px;
+      border-radius: 2px;
+    }
+
+    .legend-line.aura { background: var(--plum-800); }
+    .legend-line.sp500 { background: var(--gold-500); stroke-dasharray: 2; }
+
+    /* Allocation & Metrics Sidebar */
+    .portfolio-side-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .allocation-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-refined);
+      border-radius: var(--radius-lg);
+      padding: 26px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .donut-visual-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 18px 0;
+      position: relative;
+    }
+
+    .donut-center-label {
+      position: absolute;
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .donut-center-pct {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--plum-800);
+      line-height: 1;
+    }
+
+    .donut-center-sub {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+
+    .allocation-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      list-style: none;
+    }
+
+    .allocation-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.8125rem;
+      padding: 4px 6px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .allocation-row:hover {
+      background: var(--bg-surface-alt);
+    }
+
+    .allocation-badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 8px;
+    }
+
+    /* Risk Metrics Box */
+    .metrics-grid-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-refined);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .metrics-2x2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .metric-subcard {
+      background: #FAF8F5;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 14px;
+    }
+
+    .metric-title {
+      font-size: 0.6875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+    }
+
+    .metric-val {
+      font-family: var(--font-mono);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--plum-900);
+    }
+
+    .metric-verdict {
+      font-size: 0.6875rem;
+      color: var(--gold-700);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    /* ==========================================================================
+       7. MACRO INSIGHTS & EDITORIAL DISPATCHES
+       ========================================================================== */
+    .section-insights {
+      padding: 60px 0;
+    }
+
+    .insights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      margin-top: 32px;
+    }
+
+    .editorial-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-refined);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition-smooth);
+      position: relative;
+      cursor: pointer;
+    }
+
+    .editorial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--gold-500);
+    }
+
+    .editorial-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      margin-bottom: 16px;
+    }
+
+    .editorial-tag {
+      font-family: var(--font-mono);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--plum-800);
+      background: var(--plum-50);
+      border: 1px solid var(--border-gold);
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+    }
+
+    .editorial-read-time {
+      color: var(--text-muted);
+    }
+
+    .editorial-title {
+      font-family: var(--font-serif);
+      font-size: 1.625rem;
+      font-weight: 600;
+      color: var(--plum-900);
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+
+    .editorial-excerpt {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 24px;
+    }
+
+    .editorial-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 18px;
+      border-top: 1px solid var(--border-subtle);
+      font-size: 0.8125rem;
+    }
+
+    .author-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .author-avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #340C1A;
+      color: #FAF5F0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-family: var(--font-serif);
+      font-weight: 600;
+    }
+
+    .author-name {
+      font-weight: 600;
+      color: var(--text-heading);
+    }
+
+    .editorial-arrow {
+      color: var(--gold-700);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: transform 0.2s;
+    }
+
+    .editorial-card:hover .editorial-arrow {
+      transform: translateX(4px);
+    }
+
+    /* ==========================================================================
+       8. CONCIERGE & BESPOKE ADVISORY CALL TO ACTION
+       ========================================================================== */
+    .section-advisory-banner {
+      padding: 40px 0 80px 0;
+    }
+
+    .advisory-container-box {
+      background: linear-gradient(135deg, #240711 0%, #340C1A 50%, #1F050D 100%);
+      border: 1px solid rgba(197, 168, 128, 0.4);
+      border-radius: var(--radius-lg);
+      padding: 60px 48px;
+      color: #FAF5F0;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(36, 7, 17, 0.25);
+    }
+
+    .advisory-container-box::before {
+      content: "";
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(197, 168, 128, 0.2) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .advisory-content-wrap {
+      max-width: 760px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .advisory-pretitle {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #E6D2B8;
+      margin-bottom: 12px;
+    }
+
+    .advisory-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 500;
+      line-height: 1.15;
+      color: #FFFFFF;
+      margin-bottom: 16px;
+    }
+
+    .advisory-desc {
+      font-size: 1rem;
+      color: rgba(250, 245, 240, 0.85);
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+
+    .advisory-btn-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-advisory-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #C5A880 0%, #A8834F 100%);
+      color: #240711;
+      padding: 14px 32px;
+      border-radius: var(--radius-full);
+      font-size: 0.9375rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      box-shadow: 0 8px 24px rgba(168, 131, 79, 0.35);
+      transition: var(--transition-smooth);
+    }
+
+    .btn-advisory-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(168, 131, 79, 0.45);
+      background: linear-gradient(135deg, #D4BA94 0%, #B8925A 100%);
+    }
+
+    .btn-advisory-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #FAF5F0;
+      padding: 14px 28px;
+      border-radius: var(--radius-full);
+      font-size: 0.9375rem;
+      font-weight: 500;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-advisory-ghost:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: #FAF5F0;
+    }
+
+    /* ==========================================================================
+       9. FOOTER
+       ========================================================================== */
+    .site-footer {
+      background: #FFFFFF;
+      border-top: 1px solid var(--border-refined);
+      padding: 70px 0 36px 0;
+      color: var(--text-body);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.8fr 1fr 1fr 1.2fr;
+      gap: 40px;
+      margin-bottom: 56px;
+    }
+
+    @media (max-width: 900px) {
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 580px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .footer-brand-col {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .footer-desc {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      max-width: 320px;
+    }
+
+    .global-desks-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .desk-pill {
+      font-size: 0.6875rem;
+      font-family: var(--font-mono);
+      background: #FAF8F5;
+      border: 1px solid var(--border-subtle);
+      padding: 3px 8px;
+      border-radius: 4px;
+      color: var(--plum-800);
+    }
+
+    .footer-col-title {
+      font-family: var(--font-serif);
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--plum-900);
+      margin-bottom: 18px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--plum-700);
+    }
+
+    .newsletter-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .newsletter-input-group {
+      display: flex;
+      background: #FAF8F5;
+      border: 1px solid var(--border-refined);
+      border-radius: var(--radius-full);
+      padding: 3px;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      padding: 9px 14px;
+      background: transparent;
+      border: none;
+      font-size: 0.8125rem;
+      color: var(--text-heading);
+    }
+
+    .newsletter-btn {
+      background: var(--plum-800);
+      color: #FAF5F0;
+      border-radius: var(--radius-full);
+      padding: 9px 16px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      transition: var(--transition-smooth);
+    }
+
+    .newsletter-btn:hover {
+      background: var(--plum-700);
+    }
+
+    .regulatory-box {
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 32px;
+      font-size: 0.75rem;
+      color: var(--text-subtle);
+      line-height: 1.6;
+    }
+
+    .footer-bottom-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--border-subtle);
+      margin-top: 24px;
+      padding-top: 24px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* ==========================================================================
+       10. MODALS (CLIENT PORTAL, ASSET INSPECT, DISPATCH READER)
+       ========================================================================== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(36, 7, 17, 0.6);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      padding: 20px;
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-container {
+      background: #FFFFFF;
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 620px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 24px 60px rgba(36, 7, 17, 0.3);
+      transform: translateY(20px) scale(0.97);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+
+    .modal-overlay.open .modal-container {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #FAF8F5;
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 1.25rem;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      z-index: 10;
+    }
+
+    .modal-close-btn:hover {
+      background: var(--plum-800);
+      color: #FFFFFF;
+    }
+
+    /* Client Portal Modal Content */
+    .portal-modal-header {
+      background: linear-gradient(135deg, #240711 0%, #340C1A 100%);
+      padding: 36px 36px 30px 36px;
+      color: #FAF5F0;
+      text-align: center;
+      position: relative;
+    }
+
+    .portal-shield-icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 14px auto;
+      border-radius: 12px;
+      background: rgba(197, 168, 128, 0.15);
+      border: 1px solid var(--gold-500);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .portal-shield-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: #EEDABE;
+      fill: none;
+    }
+
+    .portal-modal-body {
+      padding: 32px 36px;
+    }
+
+    .portal-form-group {
+      margin-bottom: 20px;
+    }
+
+    .portal-label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .portal-input {
+      width: 100%;
+      padding: 12px 16px;
+      background: #FAF8F5;
+      border: 1px solid var(--border-refined);
+      border-radius: var(--radius-sm);
+      font-size: 0.9375rem;
+      color: var(--text-heading);
+      transition: var(--transition-smooth);
+    }
+
+    .portal-input:focus {
+      background: #FFFFFF;
+      border-color: var(--gold-600);
+      box-shadow: 0 0 0 3px rgba(197, 168, 128, 0.2);
+    }
+
+    .btn-submit-portal {
+      width: 100%;
+      padding: 14px;
+      background: var(--plum-800);
+      color: #FAF5F0;
+      border: 1px solid rgba(197, 168, 128, 0.3);
+      border-radius: var(--radius-full);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      box-shadow: var(--shadow-plum);
+      transition: var(--transition-smooth);
+      margin-top: 8px;
+    }
+
+    .btn-submit-portal:hover {
+      background: var(--plum-700);
+      transform: translateY(-1px);
+    }
+
+    .demo-login-hint {
+      margin-top: 18px;
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .demo-login-chip {
+      display: inline-block;
+      margin-top: 6px;
+      background: var(--gold-100);
+      color: var(--gold-700);
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid var(--border-gold);
+    }
+
+    /* Toast Notification */
+    .toast-container {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 2000;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      pointer-events: none;
+    }
+
+    .toast-msg {
+      background: #240711;
+      color: #FAF5F0;
+      border: 1px solid var(--gold-500);
+      border-radius: var(--radius-md);
+      padding: 14px 20px;
+      font-size: 0.8125rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      animation: slideInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      pointer-events: auto;
+    }
+
+    @keyframes slideInUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Responsive Queries */
+    @media (max-width: 768px) {
+      .header-inner { height: 68px; }
+      .nav-links { display: none; }
+      .mobile-menu-btn { display: flex; }
+      .hero-stats-ribbon { grid-template-columns: 1fr 1fr; gap: 16px; padding: 20px; }
+      .stat-item:not(:last-child)::after { display: none; }
+      .hero-section { padding: 48px 0 40px 0; }
+      .advisory-container-box { padding: 36px 24px; }
+      .advisory-title { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       1. TOP ANNOUNCEMENT BAR
+       ========================================================================== -->
+  <aside class="top-bar" id="topAnnouncement">
+    <div class="container top-bar-inner">
+      <div class="top-bar-left">
+        <span class="status-badge-live">
+          <span class="pulse-dot"></span>
+          Institutional Feed
+        </span>
+        <span class="top-bar-headline">
+          <strong>AURA GLOBAL ALPHA REPORT Q3 2026:</strong> Sovereign allocations in private luxury & high-margin tech up +18.4%.
+        </span>
+      </div>
+      <div class="top-bar-right">
+        <div class="currency-select-wrapper">
+          <span>Currency:</span>
+          <select class="currency-select" id="currencySelector" onchange="AuraApp.changeCurrency(this.value)">
+            <option value="USD">USD ($)</option>
+            <option value="EUR">EUR (€)</option>
+            <option value="CHF">CHF (Fr)</option>
+            <option value="GBP">GBP (£)</option>
+          </select>
+        </div>
+        <a href="#advisory" class="top-bar-concierge">
+          Private Concierge
+        </a>
+        <button class="top-bar-close" onclick="document.getElementById('topAnnouncement').style.display='none'" aria-label="Close notification">&times;</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==========================================================================
+       2. HEADER NAVIGATION
+       ========================================================================== -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <!-- Minimalist Luxury Logo -->
+      <a href="#" class="brand-logo">
+        <div class="brand-mark">
+          <svg viewBox="0 0 24 24">
+            <polygon points="12 2 21 8.5 21 15.5 12 22 3 15.5 3 8.5" stroke="currentColor"/>
+            <path d="M12 6L17 10L17 14L12 18L7 14L7 10Z" fill="rgba(197, 168, 128, 0.4)"/>
+            <circle cx="12" cy="12" r="2" fill="#FAF5F0"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">AURA WEALTH</span>
+          <span class="brand-subline">BOUTIQUE ASSET INTELLIGENCE</span>
+        </div>
+      </a>
+
+      <!-- Clean Navigation Links -->
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="#markets" class="nav-link">Markets</a></li>
+          <li><a href="#screener" class="nav-link">Analytics Terminal</a></li>
+          <li><a href="#portfolio" class="nav-link">Portfolios & Alpha</a></li>
+          <li><a href="#insights" class="nav-link">The Sovereign Memo</a></li>
+          <li><a href="#advisory" class="nav-link">Private Advisory</a></li>
+        </ul>
+      </nav>
+
+      <!-- Right Header Actions -->
+      <div class="header-actions">
+        <button class="btn-search-trigger" onclick="AuraApp.focusScreenerSearch()">
+          <svg class="search-icon-inside" viewBox="0 0 24 24" style="position:static; transform:none; stroke: currentColor;">
+            <circle cx="11" cy="11" r="7"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <span>Find Asset</span>
+          <span class="kbd-shortcut">⌘K</span>
+        </button>
+
+        <!-- Pill-shaped Plum Button -->
+        <button class="btn-portal" onclick="AuraApp.openPortalModal()">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-width="1.8"/>
+            <circle cx="12" cy="11" r="2.5" stroke-width="1.8"/>
+          </svg>
+          <span>Client Portal</span>
+        </button>
+
+        <button class="mobile-menu-btn" onclick="AuraApp.toggleMobileMenu()" aria-label="Toggle navigation">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==========================================================================
+         3. HERO SECTION
+         ========================================================================== -->
+    <section class="hero-section">
+      <div class="hero-ornament-left"></div>
+      <div class="hero-ornament-right"></div>
+      
+      <div class="container hero-content">
+        <!-- Tagline -->
+        <div class="hero-tagline-wrapper">
+          <svg viewBox="0 0 24 24">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+          <span class="hero-tagline">BUILD YOUR WEALTH WITH PRECISION</span>
+        </div>
+
+        <!-- Exquisite large serif title -->
+        <h1 class="hero-title">
+          Boutique Stock Intelligence<br><em>&amp;</em> Wealth Stewardship
+        </h1>
+
+        <!-- Concise subheadline -->
+        <p class="hero-subheadline">
+          Institutional-grade equity data filtered through an ultra-refined, bespoke lens. Zero friction, zero noise—crafted exclusively for sovereign wealth, family offices, and discerning investors.
+        </p>
+
+        <!-- Actions -->
+        <div class="hero-actions">
+          <a href="#screener" class="btn-hero-primary">
+            <span>Explore Terminal</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+          <button class="btn-hero-secondary" onclick="AuraApp.openAdvisoryModal()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold-600)" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+            <span>Request Advisory Invitation</span>
+          </button>
+        </div>
+
+        <!-- Trust & Metrics Ribbon -->
+        <div class="hero-stats-ribbon">
+          <div class="stat-item">
+            <div class="stat-number" id="heroStatAum">$18.4B</div>
+            <div class="stat-label">Assets Monitored</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">4,200+</div>
+            <div class="stat-label">Sovereign &amp; Blue-Chip Equities</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">&lt; 12ms</div>
+            <div class="stat-label">Direct Exchange Feeds</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">2.41</div>
+            <div class="stat-label">Sovereign Sharpe Alpha</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         4. INTERACTIVE STOCK TICKER / MARKET OVERVIEW
+         ========================================================================== -->
+    <section class="section-market-overview" id="markets">
+      <div class="container">
+        <div class="section-header-flex">
+          <div class="section-title-wrap">
+            <div class="section-pretitle">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
+              <span>Global Macro Overview</span>
+            </div>
+            <h2 class="section-title">Major Benchmarks &amp; Indices</h2>
+            <p class="section-subtitle">Real-time valuation pulses across sovereign indices, hard stores of value, and sovereign reserves.</p>
+          </div>
+
+          <div class="market-timeframe-controls">
+            <button class="btn-tf" onclick="AuraApp.changeTimeframe('1D', this)">1D</button>
+            <button class="btn-tf active" onclick="AuraApp.changeTimeframe('1W', this)">1W</button>
+            <button class="btn-tf" onclick="AuraApp.changeTimeframe('1M', this)">1M</button>
+            <button class="btn-tf" onclick="AuraApp.changeTimeframe('1Y', this)">1Y</button>
+            <button class="btn-tf" onclick="AuraApp.changeTimeframe('ALL', this)">ALL</button>
+          </div>
+        </div>
+
+        <!-- Indices Cards Grid -->
+        <div class="indices-grid" id="indicesCardsContainer">
+          <!-- Populated by JavaScript with interactive sparklines -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         5. WATCHLIST / ASSET SCREENER
+         ========================================================================== -->
+    <section class="section-screener" id="screener">
+      <div class="container">
+        <div class="section-header-flex">
+          <div class="section-title-wrap">
+            <div class="section-pretitle">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+              <span>Boutique Screener &amp; Valuation Desk</span>
+            </div>
+            <h2 class="section-title">Sovereign Equity Screener</h2>
+            <p class="section-subtitle">Search, filter, and track elite companies with live simulated execution ticks, proprietary Aura Scores, and fundamental multiples.</p>
+          </div>
+
+          <div class="screener-actions-right">
+            <button class="btn-sim-stream active" id="btnLiveToggle" onclick="AuraApp.toggleLiveSimulation()">
+              <span class="pulse-dot" id="liveDot"></span>
+              <span id="liveStatusText">Live Feed: Active</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Screener Main Card -->
+        <div class="screener-card">
+          <div class="screener-header">
+            <div class="screener-controls-row">
+              <!-- Search Input -->
+              <div class="screener-search-wrapper">
+                <svg class="search-icon-inside" viewBox="0 0 24 24">
+                  <circle cx="11" cy="11" r="7"/>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                </svg>
+                <input type="text" id="screenerSearch" class="screener-search-input" placeholder="Search by name, symbol, or sector (e.g. LVMH, AAPL, Ferrari)..." oninput="AuraApp.handleSearch(this.value)">
+              </div>
+
+              <!-- Filter Pills for Sector -->
+              <div class="sector-tabs-wrap" id="sectorFilterTabs">
+                <button class="sector-tab active" onclick="AuraApp.filterSector('ALL', this)">All Equities</button>
+                <button class="sector-tab" onclick="AuraApp.filterSector('LUXURY', this)">Luxury &amp; Heritage</button>
+                <button class="sector-tab" onclick="AuraApp.filterSector('TECH', this)">Mega-Cap Tech</button>
+                <button class="sector-tab" onclick="AuraApp.filterSector('SWISS', this)">Swiss &amp; European Private</button>
+                <button class="sector-tab" onclick="AuraApp.filterSector('ENERGY', this)">Strategic Infra &amp; Semi</button>
+                <button class="sector-tab" onclick="AuraApp.filterSector('WATCHLIST', this)">★ My Watchlist (<span id="watchlistCount">0</span>)</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Table Content -->
+          <div class="screener-table-container">
+            <table class="screener-table">
+              <thead>
+                <tr>
+                  <th class="cell-star" title="Bookmark to Watchlist">★</th>
+                  <th onclick="AuraApp.sortTable('name')">Asset &amp; Sector <span class="th-sort-icon">↕</span></th>
+                  <th onclick="AuraApp.sortTable('price')">Last Price <span class="th-sort-icon">↕</span></th>
+                  <th onclick="AuraApp.sortTable('change')">24h Change <span class="th-sort-icon">↕</span></th>
+                  <th>7D Sparkline</th>
+                  <th onclick="AuraApp.sortTable('mcap')">Market Cap <span class="th-sort-icon">↕</span></th>
+                  <th onclick="AuraApp.sortTable('pe')">P/E Ratio <span class="th-sort-icon">↕</span></th>
+                  <th onclick="AuraApp.sortTable('auraScore')">Aura Score <span class="th-sort-icon">↕</span></th>
+                  <th style="text-align: right;">Action</th>
+                </tr>
+              </thead>
+              <tbody id="screenerTableBody">
+                <!-- Injected via JavaScript -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Screener Footer Status -->
+          <div class="screener-footer">
+            <span id="screenerCountLabel">Displaying 12 premier monitored assets</span>
+            <span>Data synced via Direct Tier-1 Swiss Custody Feeds</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+       6. PORTFOLIO PERFORMANCE VISUALIZER
+       ========================================================================== -->
+    <section class="section-portfolio" id="portfolio">
+      <div class="container">
+        <div class="section-header-flex">
+          <div class="section-title-wrap">
+            <div class="section-pretitle">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M16 12l-4-4-4 4M12 16V9"></path>
+              </svg>
+              <span>Discretionary Mandate Visualizer</span>
+            </div>
+            <h2 class="section-title">Portfolio Performance &amp; Asset Allocation</h2>
+            <p class="section-subtitle">Real-time simulation of high-net-worth portfolio alpha, dynamic rebalancing, and factor risk exposures.</p>
+          </div>
+
+          <div class="portfolio-strategy-selector">
+            <button class="btn-strategy active" onclick="AuraApp.switchStrategy('sovereign', this)">Sovereign Endowment</button>
+            <button class="btn-strategy" onclick="AuraApp.switchStrategy('growth', this)">Boutique Tech Growth</button>
+            <button class="btn-strategy" onclick="AuraApp.switchStrategy('preservation', this)">Preservation &amp; Yield</button>
+          </div>
+        </div>
+
+        <div class="portfolio-grid">
+          <!-- Large Interactive Line Chart Card -->
+          <div class="portfolio-chart-card">
+            <div class="portfolio-card-header">
+              <div>
+                <div class="portfolio-meta-title" id="portfolioMandateLabel">Sovereign Alpha Mandate • Cumulative Value</div>
+                <div class="portfolio-val-large" id="portfolioDisplayValue">$12,485,300</div>
+                <div class="portfolio-gain-tag" id="portfolioDisplayGain">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                    <polyline points="17 6 23 6 23 12"></polyline>
+                  </svg>
+                  <span>+$2,140,850 (+20.7% Net Return)</span>
+                </div>
+              </div>
+
+              <!-- Timeframe toggles for chart -->
+              <div class="market-timeframe-controls">
+                <button class="btn-tf" onclick="AuraApp.setPortfolioChartTf('YTD', this)">YTD</button>
+                <button class="btn-tf active" onclick="AuraApp.setPortfolioChartTf('1Y', this)">1Y</button>
+                <button class="btn-tf" onclick="AuraApp.setPortfolioChartTf('3Y', this)">3Y</button>
+                <button class="btn-tf" onclick="AuraApp.setPortfolioChartTf('5Y', this)">5Y</button>
+              </div>
+            </div>
+
+            <!-- Custom SVG Interactive Area Chart -->
+            <div class="chart-svg-wrap" id="portfolioChartWrapper">
+              <svg id="portfolioMainChartSvg" viewBox="0 0 800 280" style="width:100%; height:100%; overflow:visible;">
+                <!-- Dynamically generated smooth paths & hover crosshairs -->
+              </svg>
+            </div>
+
+            <div class="chart-legend">
+              <div class="legend-item">
+                <div class="legend-line aura"></div>
+                <span>Aura Sovereign Portfolio</span>
+              </div>
+              <div class="legend-item">
+                <div class="legend-line sp500"></div>
+                <span>S&amp;P 500 Total Return Benchmark</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Allocation & Risk Metrics Sidebar -->
+          <div class="portfolio-side-stack">
+            <!-- Asset Allocation Donut Card -->
+            <div class="allocation-card">
+              <div class="portfolio-meta-title">Target Asset Allocation</div>
+              <h3 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--plum-900); font-weight: 600;">Factor Breakdown</h3>
+              
+              <div class="donut-visual-container">
+                <svg id="donutChartSvg" width="160" height="160" viewBox="0 0 160 160">
+                  <!-- Slices dynamically rendered by JavaScript -->
+                </svg>
+                <div class="donut-center-label">
+                  <div class="donut-center-pct" id="donutHighlightPct">38%</div>
+                  <div class="donut-center-sub" id="donutHighlightName">Blue-Chip</div>
+                </div>
+              </div>
+
+              <ul class="allocation-list" id="allocationList">
+                <!-- Injected via JavaScript -->
+              </ul>
+            </div>
+
+            <!-- Risk Metrics Box -->
+            <div class="metrics-grid-card">
+              <div class="portfolio-meta-title">Risk &amp; Factor Analytics</div>
+              <div class="metrics-2x2">
+                <div class="metric-subcard">
+                  <div class="metric-title">Sharpe Ratio</div>
+                  <div class="metric-val" id="metricSharpe">2.41</div>
+                  <div class="metric-verdict">Top 1% Decile</div>
+                </div>
+                <div class="metric-subcard">
+                  <div class="metric-title">Portfolio Beta</div>
+                  <div class="metric-val" id="metricBeta">0.68</div>
+                  <div class="metric-verdict">Low Correlation</div>
+                </div>
+                <div class="metric-subcard">
+                  <div class="metric-title">Max Drawdown</div>
+                  <div class="metric-val" id="metricDrawdown">-4.1%</div>
+                  <div class="metric-verdict">Institutional Floor</div>
+                </div>
+                <div class="metric-subcard">
+                  <div class="metric-title">Annual Dividend</div>
+                  <div class="metric-val" id="metricYield">3.42%</div>
+                  <div class="metric-verdict">$427k Cash Flow</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+       7. MACRO INSIGHTS / "THE SOVEREIGN MEMO"
+       ========================================================================== -->
+    <section class="section-insights" id="insights">
+      <div class="container">
+        <div class="section-header-flex">
+          <div class="section-title-wrap">
+            <div class="section-pretitle">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+              <span>Intellectual Capital &amp; Macro Intelligence</span>
+            </div>
+            <h2 class="section-title">The Sovereign Memo</h2>
+            <p class="section-subtitle">Private intelligence briefings on structural wealth dynamics, European luxury pricing power, and monetary regimes.</p>
+          </div>
+        </div>
+
+        <div class="insights-grid">
+          <!-- Article 1 -->
+          <article class="editorial-card" onclick="AuraApp.openArticleModal(0)">
+            <div>
+              <div class="editorial-top">
+                <span class="editorial-tag">Pricing Moats</span>
+                <span class="editorial-read-time">6 min read • Oct 2026</span>
+              </div>
+              <h3 class="editorial-title">The Luxury Paradox: Super-Cap Pricing Power in Stagflationary Regimes</h3>
+              <p class="editorial-excerpt">
+                Why Hermès, LVMH, and Brunello Cucinelli operate outside standard price elasticity curves, compounding operating margins even during high terminal rates.
+              </p>
+            </div>
+            <div class="editorial-footer">
+              <div class="author-info">
+                <div class="author-avatar">AL</div>
+                <span class="author-name">Alexandre Laurent, Geneva</span>
+              </div>
+              <div class="editorial-arrow">
+                <span>Read Brief</span> &rarr;
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 2 -->
+          <article class="editorial-card" onclick="AuraApp.openArticleModal(1)">
+            <div>
+              <div class="editorial-top">
+                <span class="editorial-tag">Strategic Tech</span>
+                <span class="editorial-read-time">8 min read • Sep 2026</span>
+              </div>
+              <h3 class="editorial-title">Sovereign Semiconductor Monopolies: ASML &amp; The Physical Bottleneck</h3>
+              <p class="editorial-excerpt">
+                An equity thesis evaluating why extreme ultraviolet lithography constitutes the single most defensible geopolitical moat in global asset markets.
+              </p>
+            </div>
+            <div class="editorial-footer">
+              <div class="author-info">
+                <div class="author-avatar">VS</div>
+                <span class="author-name">Victoria Stirling, London</span>
+              </div>
+              <div class="editorial-arrow">
+                <span>Read Brief</span> &rarr;
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 3 -->
+          <article class="editorial-card" onclick="AuraApp.openArticleModal(2)">
+            <div>
+              <div class="editorial-top">
+                <span class="editorial-tag">Sovereign Reserves</span>
+                <span class="editorial-read-time">5 min read • Aug 2026</span>
+              </div>
+              <h3 class="editorial-title">The Renascence of Physical Gold &amp; Decentralized Collateral</h3>
+              <p class="editorial-excerpt">
+                How central banks and Tier-1 family offices are quietly reallocating $450B from fiat sovereign treasuries toward unencumbered hard collateral.
+              </p>
+            </div>
+            <div class="editorial-footer">
+              <div class="author-info">
+                <div class="author-avatar">HK</div>
+                <span class="author-name">Hans Keller, Zurich</span>
+              </div>
+              <div class="editorial-arrow">
+                <span>Read Brief</span> &rarr;
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+       8. BESPOKE PRIVATE ADVISORY INVITATION
+       ========================================================================== -->
+    <section class="section-advisory-banner" id="advisory">
+      <div class="container">
+        <div class="advisory-container-box">
+          <div class="advisory-content-wrap">
+            <div class="advisory-pretitle">Private Client Services &amp; Discretionary Mandates</div>
+            <h2 class="advisory-title">Elevate Your Capital Stewardship with Bespoke Intelligence</h2>
+            <p class="advisory-desc">
+              We manage relationships by invitation and private referral. Receive dedicated institutional execution, custom tax-efficient structuring, and our proprietary algorithmic analytics terminal tailored to your balance sheet.
+            </p>
+            <div class="advisory-btn-row">
+              <button class="btn-advisory-gold" onclick="AuraApp.openAdvisoryModal()">
+                <span>Schedule Private Consultation</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+              <button class="btn-advisory-ghost" onclick="AuraApp.openPortalModal()">
+                <span>VIP Portal Access</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       9. FOOTER
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Brand Summary -->
+        <div class="footer-brand-col">
+          <a href="#" class="brand-logo">
+            <div class="brand-mark">
+              <svg viewBox="0 0 24 24">
+                <polygon points="12 2 21 8.5 21 15.5 12 22 3 15.5 3 8.5" stroke="currentColor"/>
+                <circle cx="12" cy="12" r="2" fill="#FAF5F0"/>
+              </svg>
+            </div>
+            <div class="brand-text">
+              <span class="brand-name">AURA WEALTH</span>
+              <span class="brand-subline">EST. 2018</span>
+            </div>
+          </a>
+          <p class="footer-desc">
+            Independent wealth intelligence, discretionary portfolio management, and proprietary quantitative analytics for sovereign capital and global family offices.
+          </p>
+          <div class="global-desks-list">
+            <span class="desk-pill">Zurich</span>
+            <span class="desk-pill">Geneva</span>
+            <span class="desk-pill">Mayfair London</span>
+            <span class="desk-pill">New York</span>
+            <span class="desk-pill">Singapore</span>
+          </div>
+        </div>
+
+        <!-- Links: Terminal & Markets -->
+        <div>
+          <h4 class="footer-col-title">Terminal</h4>
+          <ul class="footer-links">
+            <li><a href="#markets">Global Indices</a></li>
+            <li><a href="#screener">Sovereign Screener</a></li>
+            <li><a href="#portfolio">Factor Allocation</a></li>
+            <li><a href="#screener">Watchlist Manager</a></li>
+            <li><a href="#portfolio">Stress Test Analytics</a></li>
+          </ul>
+        </div>
+
+        <!-- Links: Advisory & Insights -->
+        <div>
+          <h4 class="footer-col-title">Intelligence</h4>
+          <ul class="footer-links">
+            <li><a href="#insights">The Sovereign Memo</a></li>
+            <li><a href="#advisory">Boutique Mandates</a></li>
+            <li><a href="#advisory">Family Office Advisory</a></li>
+            <li><a href="#advisory">Custody Architecture</a></li>
+            <li><a href="#advisory">Direct Execution Desk</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter / Memo Dispatch -->
+        <div>
+          <h4 class="footer-col-title">The Sovereign Dispatch</h4>
+          <p style="font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 12px;">
+            A weekly executive memo covering asymmetric equity ideas and private macro developments.
+          </p>
+          <form class="newsletter-form" onsubmit="AuraApp.handleNewsletter(event)">
+            <div class="newsletter-input-group">
+              <input type="email" required placeholder="executive@familyoffice.com" class="newsletter-input">
+              <button type="submit" class="newsletter-btn">Subscribe</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Regulatory Disclaimers -->
+      <div class="regulatory-box">
+        <p>
+          <strong>Regulatory &amp; Legal Disclaimers:</strong> Aura Wealth SA is a registered investment advisor under applicable Swiss and international financial supervisory authorities. Past performance is no guarantee of future returns. Market simulations and analytical projections are provided for institutional intelligence purposes and do not constitute an offer to buy or sell securities. Custody accounts are maintained separately with licensed tier-1 depository institutions in Switzerland, the United Kingdom, and the United States.
+        </p>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom-bar">
+        <span>&copy; 2026 Aura Wealth Management AG. All rights reserved.</span>
+        <div style="display: flex; gap: 20px;">
+          <a href="#">Privacy Protocol</a>
+          <a href="#">Terms of Stewardship</a>
+          <a href="#">Institutional Security</a>
+          <a href="#">Disclosures</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       10. INTERACTIVE MODALS
+       ========================================================================== -->
+  
+  <!-- CLIENT PORTAL MODAL -->
+  <div class="modal-overlay" id="portalModal">
+    <div class="modal-container">
+      <button class="modal-close-btn" onclick="AuraApp.closeModals()">&times;</button>
+      <div class="portal-modal-header">
+        <div class="portal-shield-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <circle cx="12" cy="11" r="3"/>
+          </svg>
+        </div>
+        <h3 style="font-family: var(--font-serif); font-size: 1.8rem; font-weight: 600; color: #FAF5F0;">Private Client Portal</h3>
+        <p style="font-size: 0.8125rem; color: #D8BF9D; margin-top: 4px;">Biometric 256-Bit Encrypted Sovereign Terminal</p>
+      </div>
+      <div class="portal-modal-body">
+        <form onsubmit="AuraApp.handlePortalLogin(event)">
+          <div class="portal-form-group">
+            <label class="portal-label">Client Key / Identity Identifier</label>
+            <input type="text" id="portalClientId" class="portal-input" value="AW-9082-SOVEREIGN" required>
+          </div>
+          <div class="portal-form-group">
+            <label class="portal-label">Passcode / Swiss Vault Token</label>
+            <input type="password" id="portalPasscode" class="portal-input" value="••••••••••••" required>
+          </div>
+          <button type="submit" class="btn-submit-portal">Authenticate &amp; Launch Terminal</button>
+        </form>
+
+        <div class="demo-login-hint">
+          <span>Demonstration environment active.</span><br>
+          <span class="demo-login-chip" onclick="AuraApp.quickDemoLogin()">⚡ Quick One-Click Guest Access</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ASSET DEEP-DIVE MODAL -->
+  <div class="modal-overlay" id="assetDetailModal">
+    <div class="modal-container" style="max-width: 720px;">
+      <button class="modal-close-btn" onclick="AuraApp.closeModals()">&times;</button>
+      <div style="padding: 32px 36px;" id="assetModalBody">
+        <!-- Injected via JavaScript dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ADVISORY CONSULTATION MODAL -->
+  <div class="modal-overlay" id="advisoryModal">
+    <div class="modal-container">
+      <button class="modal-close-btn" onclick="AuraApp.closeModals()">&times;</button>
+      <div class="portal-modal-header" style="background: linear-gradient(135deg, #1F050D 0%, #340C1A 100%);">
+        <h3 style="font-family: var(--font-serif); font-size: 1.8rem; font-weight: 600; color: #FAF5F0;">Private Advisory Invitation</h3>
+        <p style="font-size: 0.8125rem; color: #D8BF9D; margin-top: 4px;">Discretionary Mandates from $5,000,000 USD</p>
+      </div>
+      <div class="portal-modal-body">
+        <form onsubmit="AuraApp.handleAdvisorySubmit(event)">
+          <div class="portal-form-group">
+            <label class="portal-label">Full Name &amp; Title</label>
+            <input type="text" class="portal-input" placeholder="e.g. Lord Marcus Vance" required>
+          </div>
+          <div class="portal-form-group">
+            <label class="portal-label">Private Email / Family Office Domain</label>
+            <input type="email" class="portal-input" placeholder="principal@vance-capital.ch" required>
+          </div>
+          <div class="portal-form-group">
+            <label class="portal-label">Investable Capital Allocation Range</label>
+            <select class="portal-input" style="cursor: pointer;">
+              <option>$5M – $25M USD (Private Client)</option>
+              <option>$25M – $100M USD (Family Office)</option>
+              <option>$100M+ USD (Sovereign Mandate)</option>
+            </select>
+          </div>
+          <div class="portal-form-group">
+            <label class="portal-label">Preferred Contact Desk</label>
+            <select class="portal-input">
+              <option>Zurich Desk (Bahnhofstrasse)</option>
+              <option>Geneva Desk (Rue du Rhône)</option>
+              <option>London Desk (Mayfair)</option>
+              <option>New York Desk (Madison Ave)</option>
+            </select>
+          </div>
+          <button type="submit" class="btn-submit-portal" style="background: linear-gradient(135deg, var(--gold-700), var(--gold-600)); color: #FFFFFF;">
+            Submit Confidential Inquiry
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ARTICLE DISPATCH MODAL -->
+  <div class="modal-overlay" id="articleModal">
+    <div class="modal-container" style="max-width: 680px;">
+      <button class="modal-close-btn" onclick="AuraApp.closeModals()">&times;</button>
+      <div style="padding: 36px 40px;" id="articleModalContent">
+        <!-- Populated via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- ==========================================================================
+       JAVASCRIPT: APPLICATION LOGIC & STATE
+       ========================================================================== -->
+  <script>
+    /**
+     * Aura Wealth Boutique Engine
+     * Handles real-time stock simulations, interactive charts, currency toggling,
+     * sorting, searching, watchlist persistence, and luxury micro-interactions.
+     */
+    const AuraApp = (function() {
+      // 1. App State
+      const state = {
+        currency: 'USD',
+        currencyMultiplier: 1.0,
+        currencySymbol: '$',
+        activeSector: 'ALL',
+        searchQuery: '',
+        sortColumn: 'mcap',
+        sortDirection: 'desc',
+        currentTimeframe: '1W',
+        portfolioStrategy: 'sovereign',
+        portfolioChartTf: '1Y',
+        isLiveSimulating: true,
+        simulationIntervalId: null,
+        watchlist: JSON.parse(localStorage.getItem('aura_watchlist') || '["MC.PA", "RMS.PA", "AAPL"]')
+      };
+
+      // Currency conversion tables
+      const currencies = {
+        USD: { symbol: '$', rate: 1.0 },
+        EUR: { symbol: '€', rate: 0.92 },
+        CHF: { symbol: 'Fr ', rate: 0.88 },
+        GBP: { symbol: '£', rate: 0.78 }
+      };
+
+      // 2. Market Indices Data
+      const indices = [
+        {
+          symbol: '^GSPC',
+          name: 'S&P 500 Index',
+          basePrice: 5842.10,
+          currentPrice: 5842.10,
+          changePct: 0.84,
+          low24h: 5798.20,
+          high24h: 5856.40,
+          sparkline: [5780, 5792, 5810, 5805, 5824, 5835, 5842.10]
+        },
+        {
+          symbol: '^NDX',
+          name: 'NASDAQ 100',
+          basePrice: 20314.50,
+          currentPrice: 20314.50,
+          changePct: 1.12,
+          low24h: 20120.00,
+          high24h: 20365.20,
+          sparkline: [19980, 20050, 20180, 20110, 20240, 20280, 20314.50]
+        },
+        {
+          symbol: 'XAU/USD',
+          name: 'Physical Gold Spot',
+          basePrice: 2684.20,
+          currentPrice: 2684.20,
+          changePct: 0.45,
+          low24h: 2668.00,
+          high24h: 2691.50,
+          sparkline: [2655, 2662, 2670, 2668, 2679, 2681, 2684.20]
+        },
+        {
+          symbol: 'BTC/USD',
+          name: 'Bitcoin Sovereign Reserve',
+          basePrice: 68420.00,
+          currentPrice: 68420.00,
+          changePct: -0.32,
+          low24h: 67800.00,
+          high24h: 69250.00,
+          sparkline: [69100, 68850, 68200, 68900, 68150, 68600, 68420.00]
+        },
+        {
+          symbol: 'US10Y',
+          name: '10-Yr US Treasury Yield',
+          basePrice: 3.98,
+          currentPrice: 3.98,
+          isYield: true,
+          changePct: -0.62,
+          low24h: 3.94,
+          high24h: 4.02,
+          sparkline: [4.05, 4.04, 4.01, 4.00, 3.99, 3.97, 3.98]
+        },
+        {
+          symbol: 'AURA-LUX',
+          name: 'Aura Luxury 50 Benchmark',
+          basePrice: 1492.80,
+          currentPrice: 1492.80,
+          changePct: 1.74,
+          low24h: 1465.10,
+          high24h: 1498.00,
+          sparkline: [1450, 1462, 1471, 1468, 1485, 1489, 1492.80]
+        }
+      ];
+
+      // 3. Asset Screener Database (Boutique & Super-Cap focus)
+      const equities = [
+        {
+          symbol: 'MC.PA',
+          name: 'LVMH Moët Hennessy',
+          sector: 'LUXURY',
+          sectorLabel: 'Luxury & Heritage',
+          avatarText: 'LM',
+          basePrice: 724.50,
+          currentPrice: 724.50,
+          changePct: 1.85,
+          mcap: 362000000000,
+          pe: 24.2,
+          auraScore: 96,
+          sparkline: [710, 712, 718, 715, 720, 722, 724.50],
+          divYield: '2.1%',
+          fcf: '$14.2B',
+          thesis: 'Dominant global moat across high-jewelry, wines & leather goods with unparalleled pricing resilience against inflation.'
+        },
+        {
+          symbol: 'RMS.PA',
+          name: 'Hermès International',
+          sector: 'LUXURY',
+          sectorLabel: 'Luxury & Heritage',
+          avatarText: 'H',
+          basePrice: 2185.00,
+          currentPrice: 2185.00,
+          changePct: 2.14,
+          mcap: 228000000000,
+          pe: 51.4,
+          auraScore: 98,
+          sparkline: [2120, 2135, 2150, 2140, 2165, 2178, 2185.00],
+          divYield: '1.2%',
+          fcf: '$4.8B',
+          thesis: 'Ultra-exclusive Veblen good dynamics. Birkin waiting lists guarantee forward earnings predictability unmatched in retail.'
+        },
+        {
+          symbol: 'RACE.MI',
+          name: 'Ferrari N.V.',
+          sector: 'LUXURY',
+          sectorLabel: 'Luxury & Heritage',
+          avatarText: 'F',
+          basePrice: 432.80,
+          currentPrice: 432.80,
+          changePct: 1.42,
+          mcap: 78500000000,
+          pe: 48.2,
+          auraScore: 94,
+          sparkline: [422, 425, 429, 426, 430, 431, 432.80],
+          divYield: '0.8%',
+          fcf: '$1.9B',
+          thesis: 'Supercar backlog fully booked through 2027. Operates more like a Swiss horology house than an automotive manufacturer.'
+        },
+        {
+          symbol: 'CFR.SW',
+          name: 'Compagnie Financière Richemont',
+          sector: 'LUXURY',
+          sectorLabel: 'Luxury & Heritage',
+          avatarText: 'R',
+          basePrice: 138.40,
+          currentPrice: 138.40,
+          changePct: 0.95,
+          mcap: 79200000000,
+          pe: 22.8,
+          auraScore: 91,
+          sparkline: [135, 136, 137, 136.5, 137.8, 138, 138.40],
+          divYield: '2.5%',
+          fcf: '$3.4B',
+          thesis: 'Cartier and Van Cleef & Arpels drive high-margin jewelry compound growth across Swiss and Asian private capitals.'
+        },
+        {
+          symbol: 'AAPL',
+          name: 'Apple Inc.',
+          sector: 'TECH',
+          sectorLabel: 'Mega-Cap Tech',
+          avatarText: 'AP',
+          basePrice: 234.10,
+          currentPrice: 234.10,
+          changePct: 1.15,
+          mcap: 3580000000000,
+          pe: 34.6,
+          auraScore: 95,
+          sparkline: [228, 230, 232, 231, 233, 233.5, 234.10],
+          divYield: '0.5%',
+          fcf: '$108B',
+          thesis: 'Consumer luxury technology ecosystem with 2.2B active installed devices generating recurring high-margin services revenue.'
+        },
+        {
+          symbol: 'NVDA',
+          name: 'NVIDIA Corporation',
+          sector: 'TECH',
+          sectorLabel: 'Mega-Cap Tech',
+          avatarText: 'NV',
+          basePrice: 138.25,
+          currentPrice: 138.25,
+          changePct: 2.84,
+          mcap: 3390000000000,
+          pe: 42.1,
+          auraScore: 97,
+          sparkline: [131, 133, 134, 136, 135, 137, 138.25],
+          divYield: '0.1%',
+          fcf: '$54B',
+          thesis: 'The undisputed compute rails of generative intelligence, holding a 90%+ share in high-performance enterprise data centers.'
+        },
+        {
+          symbol: 'MSFT',
+          name: 'Microsoft Corp.',
+          sector: 'TECH',
+          sectorLabel: 'Mega-Cap Tech',
+          avatarText: 'MS',
+          basePrice: 428.60,
+          currentPrice: 428.60,
+          changePct: 0.65,
+          mcap: 3180000000000,
+          pe: 33.2,
+          auraScore: 93,
+          sparkline: [424, 425, 427, 426, 428, 427.5, 428.60],
+          divYield: '0.8%',
+          fcf: '$74B',
+          thesis: 'Enterprise operating system monopoly paired with Azure AI infrastructure infrastructure compounder.'
+        },
+        {
+          symbol: 'ASML',
+          name: 'ASML Holding N.V.',
+          sector: 'ENERGY',
+          sectorLabel: 'Strategic Infra & Semi',
+          avatarText: 'AS',
+          basePrice: 785.40,
+          currentPrice: 785.40,
+          changePct: 1.78,
+          mcap: 314000000000,
+          pe: 38.5,
+          auraScore: 99,
+          sparkline: [765, 770, 775, 772, 780, 782, 785.40],
+          divYield: '1.4%',
+          fcf: '$7.8B',
+          thesis: 'Single-source monopoly on High-NA EUV semiconductor manufacturing machinery worldwide. Critical sovereign tech asset.'
+        },
+        {
+          symbol: 'ROG.SW',
+          name: 'Roche Holding AG',
+          sector: 'SWISS',
+          sectorLabel: 'Swiss & European Private',
+          avatarText: 'RO',
+          basePrice: 278.30,
+          currentPrice: 278.30,
+          changePct: -0.42,
+          mcap: 228000000000,
+          pe: 18.2,
+          auraScore: 89,
+          sparkline: [282, 280, 279, 281, 279, 278.8, 278.30],
+          divYield: '3.6%',
+          fcf: '$14.9B',
+          thesis: 'Basel-headquartered oncology & diagnostics titan with 37 consecutive years of Swiss dividend growth.'
+        },
+        {
+          symbol: 'NESN.SW',
+          name: 'Nestlé S.A.',
+          sector: 'SWISS',
+          sectorLabel: 'Swiss & European Private',
+          avatarText: 'NE',
+          basePrice: 86.40,
+          currentPrice: 86.40,
+          changePct: 0.35,
+          mcap: 232000000000,
+          pe: 19.4,
+          auraScore: 87,
+          sparkline: [85.5, 85.8, 86.1, 85.9, 86.2, 86.3, 86.40],
+          divYield: '3.8%',
+          fcf: '$11.2B',
+          thesis: 'Defensive sovereign food & nutrition conglomerate providing continuous, resilient dividend flows in Swiss Francs.'
+        },
+        {
+          symbol: 'BRK.B',
+          name: 'Berkshire Hathaway Inc.',
+          sector: 'SWISS',
+          sectorLabel: 'Swiss & European Private',
+          avatarText: 'BH',
+          basePrice: 472.10,
+          currentPrice: 472.10,
+          changePct: 0.48,
+          mcap: 1020000000000,
+          pe: 21.0,
+          auraScore: 92,
+          sparkline: [468, 469, 471, 470, 471.5, 472, 472.10],
+          divYield: '0.0%',
+          fcf: '$38B',
+          thesis: 'Fortress balance sheet holding over $300B in cash reserves, primed for opportunistic capital deployment in dislocations.'
+        },
+        {
+          symbol: 'RR.L',
+          name: 'Rolls-Royce Holdings',
+          sector: 'ENERGY',
+          sectorLabel: 'Strategic Infra & Semi',
+          avatarText: 'RR',
+          basePrice: 564.00,
+          currentPrice: 564.00,
+          changePct: 3.12,
+          mcap: 58000000000,
+          pe: 29.8,
+          auraScore: 90,
+          sparkline: [540, 546, 552, 549, 558, 561, 564.00],
+          divYield: '1.1%',
+          fcf: '$2.6B',
+          thesis: 'Civil aviation flight-hour recovery combined with Small Modular Reactor (SMR) nuclear power contracts across Europe.'
+        }
+      ];
+
+      // 4. Articles Data for "The Sovereign Memo"
+      const articles = [
+        {
+          tag: 'Pricing Moats',
+          title: 'The Luxury Paradox: Super-Cap Pricing Power in Stagflationary Regimes',
+          author: 'Alexandre Laurent, Senior Macro Strategist, Geneva',
+          date: 'October 2026',
+          readTime: '6 min read',
+          body: `
+            <p style="margin-bottom: 16px; font-size: 1.05rem; line-height: 1.7; color: var(--text-body);">
+              In classical microeconomics, rising consumer price indices lead to demand destruction. However, at the upper stratosphere of discretionary capital—specifically represented by houses like <strong>Hermès International</strong> and <strong>Brunello Cucinelli</strong>—a phenomenon known as the Veblen effect inverts traditional elasticities.
+            </p>
+            <p style="margin-bottom: 16px; font-size: 1.05rem; line-height: 1.7; color: var(--text-body);">
+              During the 2024–2026 macro regime, Hermès enacted cumulative price hikes of 14.8% without a discernible decline in order backlog. The wait time for bespoke Kelly and Birkin goods expanded from 18 months to 24 months, while operating margins expanded by 180 basis points to 42.1%.
+            </p>
+            <div style="background: var(--bg-surface-alt); border-left: 3px solid var(--gold-600); padding: 16px 20px; border-radius: 4px; margin: 24px 0;">
+              <p style="font-style: italic; font-size: 0.95rem; color: var(--plum-900); font-family: var(--font-serif);">
+                "True luxury is not consumed; it is preserved as an unencumbered heirloom. This psychological insulation shields its producers from cyclical downturns."
+              </p>
+            </div>
+            <p style="margin-bottom: 16px; font-size: 1.05rem; line-height: 1.7; color: var(--text-body);">
+              For sovereign portfolios, allocating 20–25% toward high-ROIC European luxury conglomerates provides an inflation hedge with lower volatility than precious metals, bolstered by continuous dividend yields compounded in Swiss Francs and Euros.
+            </p>
+          `
+        },
+        {
+          tag: 'Strategic Tech',
+          title: 'Sovereign Semiconductor Monopolies: ASML & The Physical Bottleneck',
+          author: 'Victoria Stirling, Head of Quantitative Equities, London',
+          date: 'September 2026',
+          readTime: '8 min read',
+          body: `
+            <p style="margin-bottom: 16px; font-size: 1.05rem; line-height: 1.7; color: var(--text-body);">
+              While software and model weights iterate at breakneck velocity, physical atomic manufacturing remains constrained by the laws of quantum optics. At the nexus of this physical choke point sits <strong>ASML Holding N.V.</strong>, the solitary enterprise on Earth capable of engineering High-NA EUV lithography systems.
+            </p>
+            <p style="margin-bottom: 16px; font-size: 1.05rem; line-height: 1.7; color: var(--text-body);">
+              With each tool priced at approximately €350M, ASML holds a guaranteed 100% market share in sub-2nm node equipment. Whether TSMC, Intel, or Samsung emerges victorious in enterprise fabrication, all royalty streams ultimately funnel back to Veldhoven.
+            </p>
+            <p style="margin-bottom: 16px; font-size: 1.05rem; line-height: 1.7; color: var(--text-body);">
+              From an asset stewardship perspective, ASML represents what we categorize as a <em>"Sovereign Inelastic Asset"</em>: an investment whose substitution cost is practically infinite within a ten-year horizon.
+            </p>
+          `
+        },
+        {
+          tag: 'Sovereign Reserves',
+          title: 'The Renascence of Physical Gold & Decentralized Collateral',
+          author: 'Hans Keller, Managing Partner, Zurich Desk',
+          date: 'August 2026',
+          readTime: '5 min read',
+          body: `
+            <p style="margin-bottom: 16px; font-size: 1.05rem; line-height: 1.7; color: var(--text-body);">
+              The weaponization of foreign reserve assets following geopolitical frictions in 2022 marked the definitive end of the post-Bretton Woods fiat tranquility. Central banks in the Global South, joined by private Swiss family offices, have systematically expanded physical gold reserves at the fastest pace since 1967.
+            </p>
+            <p style="margin-bottom: 16px; font-size: 1.05rem; line-height: 1.7; color: var(--text-body);">
+              Unlike sovereign debt obligations, physical gold allocated in non-bank Swiss vaults carries zero counterparty liability and cannot be revoked via administrative sanction. In parallel, sovereign entities are beginning to accumulate spot Bitcoin as liquid digital reserve collateral.
+            </p>
+            <p style="margin-bottom: 16px; font-size: 1.05rem; line-height: 1.7; color: var(--text-body);">
+              We advocate a permanent 10%–12% allocation toward unhypothecated hard assets to anchor portfolio equity beta against sovereign currency depreciation.
+            </p>
+          `
+        }
+      ];
+
+      // 5. Strategy Allocation Profiles
+      const strategyProfiles = {
+        sovereign: {
+          label: 'Sovereign Endowment Mandate',
+          valueUSD: 12485300,
+          gainText: '+$2,140,850 (+20.7% Net Return)',
+          allocations: [
+            { name: 'Global Blue-Chip Equities', pct: 38, color: '#340C1A' },
+            { name: 'Luxury & Heritage Conglomerates', pct: 24, color: '#C5A880' },
+            { name: 'Sovereign Debt & Fixed Income', pct: 20, color: '#A85A42' },
+            { name: 'Physical Gold & Alternatives', pct: 10, color: '#D4AF37' },
+            { name: 'Private Equity & Cash Buffer', pct: 8, color: '#726B66' }
+          ],
+          sharpe: '2.41',
+          beta: '0.68',
+          drawdown: '-4.1%',
+          yield: '3.42%'
+        },
+        growth: {
+          label: 'Boutique Tech Growth Mandate',
+          valueUSD: 16820400,
+          gainText: '+$4,320,100 (+34.5% Net Return)',
+          allocations: [
+            { name: 'Mega-Cap AI Infrastructure', pct: 45, color: '#340C1A' },
+            { name: 'Semiconductor Monopolies', pct: 25, color: '#C5A880' },
+            { name: 'Cybersecurity & Enterprise Cloud', pct: 15, color: '#A85A42' },
+            { name: 'Digital Reserve Assets (BTC)', pct: 10, color: '#D4AF37' },
+            { name: 'Opportunistic Cash Reserve', pct: 5, color: '#726B66' }
+          ],
+          sharpe: '2.84',
+          beta: '1.14',
+          drawdown: '-8.5%',
+          yield: '1.24%'
+        },
+        preservation: {
+          label: 'Preservation & Swiss Yield Mandate',
+          valueUSD: 9450200,
+          gainText: '+$940,300 (+11.1% Net Return)',
+          allocations: [
+            { name: 'Swiss Franc Dividend Kings', pct: 35, color: '#340C1A' },
+            { name: 'Sovereign Government Bonds', pct: 30, color: '#C5A880' },
+            { name: 'Physical Gold Bullion (Zurich)', pct: 18, color: '#D4AF37' },
+            { name: 'Ultra-Luxury Core Holdings', pct: 12, color: '#A85A42' },
+            { name: 'Treasury Bills & Liquidity', pct: 5, color: '#726B66' }
+          ],
+          sharpe: '2.95',
+          beta: '0.38',
+          drawdown: '-1.8%',
+          yield: '4.65%'
+        }
+      };
+
+      // Helper: Format Currency
+      function formatMoney(amountInUSD, decimals = 2) {
+        const converted = amountInUSD * state.currencyMultiplier;
+        return state.currencySymbol + converted.toLocaleString(undefined, {
+          minimumFractionDigits: decimals,
+          maximumFractionDigits: decimals
+        });
+      }
+
+      // Helper: Format Market Cap
+      function formatMarketCap(amountInUSD) {
+        const converted = amountInUSD * state.currencyMultiplier;
+        if (converted >= 1e12) {
+          return state.currencySymbol + (converted / 1e12).toFixed(2) + 'T';
+        } else if (converted >= 1e9) {
+          return state.currencySymbol + (converted / 1e9).toFixed(1) + 'B';
+        } else {
+          return state.currencySymbol + (converted / 1e6).toFixed(0) + 'M';
+        }
+      }
+
+      // Helper: SVG Sparkline Generator
+      function generateSparklineSvg(data, isPositive, width = 120, height = 36) {
+        if (!data || data.length < 2) return '';
+        const min = Math.min(...data);
+        const max = Math.max(...data);
+        const range = max - min || 1;
+        const padding = 3;
+
+        const points = data.map((val, idx) => {
+          const x = padding + (idx / (data.length - 1)) * (width - padding * 2);
+          const y = height - padding - ((val - min) / range) * (height - padding * 2);
+          return `${x.toFixed(1)},${y.toFixed(1)}`;
+        }).join(' ');
+
+        const strokeColor = isPositive ? 'var(--market-up)' : 'var(--market-down)';
+        const lastPoint = data[data.length - 1];
+        const lastX = width - padding;
+        const lastY = height - padding - ((lastPoint - min) / range) * (height - padding * 2);
+
+        return `
+          <svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" style="overflow: visible;">
+            <polyline fill="none" stroke="${strokeColor}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" points="${points}" />
+            <circle cx="${lastX}" cy="${lastY}" r="2.8" fill="${strokeColor}" />
+          </svg>
+        `;
+      }
+
+      // 6. Render Market Indices Cards
+      function renderIndices() {
+        const container = document.getElementById('indicesCardsContainer');
+        if (!container) return;
+
+        container.innerHTML = indices.map((idx, i) => {
+          const isPos = idx.changePct >= 0;
+          const displayPrice = idx.isYield 
+            ? idx.currentPrice.toFixed(2) + '%' 
+            : formatMoney(idx.currentPrice, idx.currentPrice > 1000 ? 2 : 2);
+          
+          const changeSign = isPos ? '+' : '';
+          const badgeClass = isPos ? 'positive' : 'negative';
+
+          // Range calculation for 24h bar
+          const rangePct = Math.min(100, Math.max(10, ((idx.currentPrice - idx.low24h) / (idx.high24h - idx.low24h)) * 100));
+
+          return `
+            <div class="index-card" onclick="AuraApp.showIndexDetail('${idx.symbol}')" id="idxCard-${i}">
+              <div class="index-card-header">
+                <div class="index-info">
+                  <span class="index-symbol">${idx.symbol}</span>
+                  <span class="index-name">${idx.name}</span>
+                </div>
+                <span class="badge-change ${badgeClass}">
+                  ${changeSign}${idx.changePct.toFixed(2)}%
+                </span>
+              </div>
+
+              <div class="index-price-row">
+                <div class="index-price">
+                  <span id="idxPrice-${i}" class="index-tick-pulse">${displayPrice}</span>
+                </div>
+                <div style="text-align: right;">
+                  ${generateSparklineSvg(idx.sparkline, isPos, 90, 32)}
+                </div>
+              </div>
+
+              <div class="index-range-bar">
+                <div class="range-labels">
+                  <span>24h L: ${idx.isYield ? idx.low24h + '%' : formatMoney(idx.low24h, 1)}</span>
+                  <span>24h H: ${idx.isYield ? idx.high24h + '%' : formatMoney(idx.high24h, 1)}</span>
+                </div>
+                <div class="range-track">
+                  <div class="range-fill" style="width: ${rangePct}%;"></div>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      // 7. Render Asset Screener Table
+      function renderScreener() {
+        const tbody = document.getElementById('screenerTableBody');
+        const countLabel = document.getElementById('screenerCountLabel');
+        const watchlistCountEl = document.getElementById('watchlistCount');
+        if (!tbody) return;
+
+        // Filter by Sector & Search
+        let filtered = equities.filter(item => {
+          // Sector match
+          if (state.activeSector === 'WATCHLIST') {
+            if (!state.watchlist.includes(item.symbol)) return false;
+          } else if (state.activeSector !== 'ALL' && item.sector !== state.activeSector) {
+            return false;
+          }
+
+          // Search match
+          if (state.searchQuery.trim()) {
+            const q = state.searchQuery.toLowerCase();
+            const matchesSymbol = item.symbol.toLowerCase().includes(q);
+            const matchesName = item.name.toLowerCase().includes(q);
+            const matchesSector = item.sectorLabel.toLowerCase().includes(q);
+            if (!matchesSymbol && !matchesName && !matchesSector) return false;
+          }
+          return true;
+        });
+
+        // Sort items
+        filtered.sort((a, b) => {
+          let valA = a[state.sortColumn];
+          let valB = b[state.sortColumn];
+          if (typeof valA === 'string') valA = valA.toLowerCase();
+          if (typeof valB === 'string') valB = valB.toLowerCase();
+
+          if (valA < valB) return state.sortDirection === 'asc' ? -1 : 1;
+          if (valA > valB) return state.sortDirection === 'asc' ? 1 : -1;
+          return 0;
+        });
+
+        if (watchlistCountEl) {
+          watchlistCountEl.textContent = state.watchlist.length;
+        }
+
+        if (countLabel) {
+          countLabel.textContent = `Displaying ${filtered.length} of ${equities.length} premier monitored assets`;
+        }
+
+        if (filtered.length === 0) {
+          tbody.innerHTML = `
+            <tr>
+              <td colspan="9" style="text-align: center; padding: 48px; color: var(--text-muted);">
+                <div style="font-family: var(--font-serif); font-size: 1.25rem; margin-bottom: 6px;">No assets match your criteria</div>
+                <p style="font-size: 0.8125rem;">Adjust search filters or select "All Equities" to view institutional universe.</p>
+              </td>
+            </tr>
+          `;
+          return;
+        }
+
+        tbody.innerHTML = filtered.map(item => {
+          const isStarred = state.watchlist.includes(item.symbol);
+          const isPos = item.changePct >= 0;
+          const displayPrice = formatMoney(item.currentPrice);
+          const sign = isPos ? '+' : '';
+          const badgeClass = isPos ? 'positive' : 'negative';
+
+          return `
+            <tr id="row-${item.symbol.replace('.', '_')}">
+              <td class="cell-star">
+                <span class="star-btn ${isStarred ? 'starred' : ''}" onclick="AuraApp.toggleWatchlist('${item.symbol}')" title="${isStarred ? 'Remove from Watchlist' : 'Add to Watchlist'}">
+                  ${isStarred ? '★' : '☆'}
+                </span>
+              </td>
+              <td>
+                <div class="asset-cell">
+                  <div class="asset-avatar">${item.avatarText}</div>
+                  <div class="asset-info">
+                    <span class="asset-symbol">${item.symbol}</span>
+                    <span class="asset-name">${item.name}</span>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <span class="font-mono-num index-tick-pulse" id="price-${item.symbol.replace('.', '_')}">${displayPrice}</span>
+              </td>
+              <td>
+                <span class="badge-change ${badgeClass}">${sign}${item.changePct.toFixed(2)}%</span>
+              </td>
+              <td>
+                ${generateSparklineSvg(item.sparkline, isPos, 80, 24)}
+              </td>
+              <td>
+                <span class="font-mono-num" style="color: var(--text-muted);">${formatMarketCap(item.mcap)}</span>
+              </td>
+              <td>
+                <span class="font-mono-num">${item.pe.toFixed(1)}x</span>
+              </td>
+              <td>
+                <span class="aura-score-pill">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                  </svg>
+                  ${item.auraScore}/100
+                </span>
+              </td>
+              <td style="text-align: right;">
+                <button class="screener-row-action" onclick="AuraApp.inspectAsset('${item.symbol}')">
+                  <span>Inspect</span>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </button>
+              </td>
+            </tr>
+          `;
+        }).join('');
+      }
+
+      // 8. Render Portfolio Visualizer (Line Chart & Donut Chart)
+      function renderPortfolioVisuals() {
+        const profile = strategyProfiles[state.portfolioStrategy] || strategyProfiles.sovereign;
+
+        // Update labels & metrics
+        const labelEl = document.getElementById('portfolioMandateLabel');
+        const valEl = document.getElementById('portfolioDisplayValue');
+        const gainEl = document.getElementById('portfolioDisplayGain');
+        const sharpeEl = document.getElementById('metricSharpe');
+        const betaEl = document.getElementById('metricBeta');
+        const drawdownEl = document.getElementById('metricDrawdown');
+        const yieldEl = document.getElementById('metricYield');
+
+        if (labelEl) labelEl.textContent = profile.label + ' • Cumulative Value';
+        if (valEl) valEl.textContent = formatMoney(profile.valueUSD, 0);
+        if (gainEl) gainEl.innerHTML = `
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+            <polyline points="17 6 23 6 23 12"></polyline>
+          </svg>
+          <span>${profile.gainText}</span>
+        `;
+        if (sharpeEl) sharpeEl.textContent = profile.sharpe;
+        if (betaEl) betaEl.textContent = profile.beta;
+        if (drawdownEl) drawdownEl.textContent = profile.drawdown;
+        if (yieldEl) yieldEl.textContent = profile.yield;
+
+        // Render Portfolio Line Chart (SVG)
+        renderPortfolioLineChart();
+
+        // Render Donut Chart (SVG)
+        renderDonutChart(profile.allocations);
+      }
+
+      function renderPortfolioLineChart() {
+        const svg = document.getElementById('portfolioMainChartSvg');
+        if (!svg) return;
+
+        // Data curves for Aura Portfolio vs Benchmark
+        const timePoints = ['Oct 25', 'Dec 25', 'Feb 26', 'Apr 26', 'Jun 26', 'Aug 26', 'Oct 26'];
+        const auraValues = [100, 104.5, 108.2, 113.8, 117.4, 122.9, 126.8];
+        const spValues   = [100, 102.1, 105.0, 107.5, 111.2, 114.6, 118.2];
+
+        const w = 800;
+        const h = 280;
+        const padX = 40;
+        const padY = 30;
+
+        const minVal = 95;
+        const maxVal = 132;
+        const range = maxVal - minVal;
+
+        const getY = v => h - padY - ((v - minVal) / range) * (h - padY * 2);
+        const getX = i => padX + (i / (timePoints.length - 1)) * (w - padX * 2);
+
+        // Build path strings
+        let auraPathD = `M ${getX(0)} ${getY(auraValues[0])}`;
+        let auraAreaD = `M ${getX(0)} ${getY(auraValues[0])}`;
+        let spPathD = `M ${getX(0)} ${getY(spValues[0])}`;
+
+        for (let i = 1; i < timePoints.length; i++) {
+          const prevX = getX(i - 1);
+          const prevY = getY(auraValues[i - 1]);
+          const currX = getX(i);
+          const currY = getY(auraValues[i]);
+          const cpX1 = prevX + (currX - prevX) / 2;
+          const cpX2 = prevX + (currX - prevX) / 2;
+
+          auraPathD += ` C ${cpX1} ${prevY}, ${cpX2} ${currY}, ${currX} ${currY}`;
+          auraAreaD += ` C ${cpX1} ${prevY}, ${cpX2} ${currY}, ${currX} ${currY}`;
+
+          const spPrevY = getY(spValues[i - 1]);
+          const spCurrY = getY(spValues[i]);
+          spPathD += ` C ${cpX1} ${spPrevY}, ${cpX2} ${spCurrY}, ${currX} ${spCurrY}`;
+        }
+
+        // Close area path
+        const lastX = getX(timePoints.length - 1);
+        const baselineY = h - padY;
+        auraAreaD += ` L ${lastX} ${baselineY} L ${getX(0)} ${baselineY} Z`;
+
+        // Horizontal gridlines
+        let gridHtml = '';
+        for (let step = 100; step <= 130; step += 10) {
+          const gy = getY(step);
+          gridHtml += `
+            <line x1="${padX}" y1="${gy}" x2="${w - padX}" y2="${gy}" stroke="rgba(74, 21, 37, 0.05)" stroke-width="1" stroke-dasharray="4" />
+            <text x="${padX - 8}" y="${gy + 4}" font-family="var(--font-mono)" font-size="10" fill="var(--text-subtle)" text-anchor="end">+${step - 100}%</text>
+          `;
+        }
+
+        // X-axis labels
+        let xLabelsHtml = '';
+        timePoints.forEach((label, i) => {
+          const gx = getX(i);
+          xLabelsHtml += `
+            <text x="${gx}" y="${h - 8}" font-family="var(--font-mono)" font-size="10" fill="var(--text-subtle)" text-anchor="middle">${label}</text>
+          `;
+        });
+
+        // Gradient definition
+        svg.innerHTML = `
+          <defs>
+            <linearGradient id="auraAreaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#4A1525" stop-opacity="0.18" />
+              <stop offset="100%" stop-color="#4A1525" stop-opacity="0.0" />
+            </linearGradient>
+          </defs>
+          ${gridHtml}
+          ${xLabelsHtml}
+          <!-- Area fill -->
+          <path d="${auraAreaD}" fill="url(#auraAreaGrad)" />
+          <!-- Benchmark Line -->
+          <path d="${spPathD}" fill="none" stroke="#C5A880" stroke-width="2" stroke-dasharray="4 4" opacity="0.85" />
+          <!-- Aura Portfolio Line -->
+          <path d="${auraPathD}" fill="none" stroke="#340C1A" stroke-width="3" stroke-linecap="round" />
+          <!-- Last Points Highlight -->
+          <circle cx="${lastX}" cy="${getY(auraValues[auraValues.length - 1])}" r="5" fill="#340C1A" stroke="#FAF8F5" stroke-width="2" />
+          <circle cx="${lastX}" cy="${getY(spValues[spValues.length - 1])}" r="4" fill="#C5A880" stroke="#FAF8F5" stroke-width="1.5" />
+        `;
+      }
+
+      function renderDonutChart(allocations) {
+        const svg = document.getElementById('donutChartSvg');
+        const listContainer = document.getElementById('allocationList');
+        if (!svg || !listContainer) return;
+
+        const size = 160;
+        const radius = 64;
+        const cx = size / 2;
+        const cy = size / 2;
+        const strokeWidth = 24;
+        const circumference = 2 * Math.PI * radius;
+
+        let accumulatedPct = 0;
+        let pathsHtml = '';
+
+        allocations.forEach((item, index) => {
+          const strokeDash = (item.pct / 100) * circumference;
+          const strokeOffset = - (accumulatedPct / 100) * circumference;
+          accumulatedPct += item.pct;
+
+          pathsHtml += `
+            <circle
+              cx="${cx}"
+              cy="${cy}"
+              r="${radius}"
+              fill="none"
+              stroke="${item.color}"
+              stroke-width="${strokeWidth}"
+              stroke-dasharray="${strokeDash} ${circumference}"
+              stroke-dashoffset="${strokeOffset}"
+              transform="rotate(-90 ${cx} ${cy})"
+              style="transition: stroke-width 0.3s ease; cursor: pointer;"
+              onmouseover="AuraApp.highlightDonutSlice('${item.name}', ${item.pct}, this)"
+              onmouseout="AuraApp.resetDonutSlice(this)"
+            />
+          `;
+        });
+
+        svg.innerHTML = pathsHtml;
+
+        // Render List
+        listContainer.innerHTML = allocations.map(item => `
+          <li class="allocation-row" onmouseover="AuraApp.highlightDonutSlice('${item.name}', ${item.pct})">
+            <div>
+              <span class="allocation-badge-dot" style="background-color: ${item.color};"></span>
+              <span style="font-weight: 500;">${item.name}</span>
+            </div>
+            <span class="font-mono-num" style="font-weight: 600; color: var(--plum-800);">${item.pct}%</span>
+          </li>
+        `).join('');
+      }
+
+      // 9. Real-Time Market Simulation Engine
+      function startLiveSimulation() {
+        if (state.simulationIntervalId) clearInterval(state.simulationIntervalId);
+
+        state.simulationIntervalId = setInterval(() => {
+          if (!state.isLiveSimulating) return;
+
+          // Pick a random stock from equities to tick
+          const randStockIdx = Math.floor(Math.random() * equities.length);
+          const stock = equities[randStockIdx];
+          const deltaPct = (Math.random() * 0.4 - 0.19); // small movement -0.19% to +0.21%
+          const oldPrice = stock.currentPrice;
+          stock.currentPrice = +(stock.currentPrice * (1 + deltaPct / 100)).toFixed(2);
+          stock.changePct = +(stock.changePct + deltaPct * 0.5).toFixed(2);
+          stock.sparkline.push(stock.currentPrice);
+          if (stock.sparkline.length > 8) stock.sparkline.shift();
+
+          // Tick UI element
+          const priceElId = `price-${stock.symbol.replace('.', '_')}`;
+          const el = document.getElementById(priceElId);
+          if (el) {
+            el.textContent = formatMoney(stock.currentPrice);
+            const isUp = stock.currentPrice >= oldPrice;
+            el.classList.add(isUp ? 'tick-up' : 'tick-down');
+            setTimeout(() => {
+              el.classList.remove('tick-up', 'tick-down');
+            }, 600);
+          }
+
+          // Pick a random index occasionally
+          if (Math.random() > 0.5) {
+            const randIdx = Math.floor(Math.random() * indices.length);
+            const indexItem = indices[randIdx];
+            const idxDelta = (Math.random() * 0.2 - 0.09);
+            const oldIdxPrice = indexItem.currentPrice;
+            indexItem.currentPrice = +(indexItem.currentPrice * (1 + idxDelta / 100)).toFixed(2);
+            indexItem.changePct = +(indexItem.changePct + idxDelta * 0.4).toFixed(2);
+
+            const idxPriceEl = document.getElementById(`idxPrice-${randIdx}`);
+            if (idxPriceEl) {
+              idxPriceEl.textContent = indexItem.isYield 
+                ? indexItem.currentPrice.toFixed(2) + '%' 
+                : formatMoney(indexItem.currentPrice, 2);
+              const isUp = indexItem.currentPrice >= oldIdxPrice;
+              idxPriceEl.classList.add(isUp ? 'tick-up' : 'tick-down');
+              setTimeout(() => {
+                idxPriceEl.classList.remove('tick-up', 'tick-down');
+              }, 600);
+            }
+          }
+        }, 2200);
+      }
+
+      // Public Interface
+      return {
+        init: function() {
+          renderIndices();
+          renderScreener();
+          renderPortfolioVisuals();
+          startLiveSimulation();
+
+          // Sticky header shadow on scroll
+          window.addEventListener('scroll', () => {
+            const header = document.getElementById('siteHeader');
+            if (window.scrollY > 30) {
+              header.classList.add('scrolled');
+            } else {
+              header.classList.remove('scrolled');
+            }
+          });
+
+          // Keyboard shortcut ⌘K or Ctrl+K to focus search
+          window.addEventListener('keydown', (e) => {
+            if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+              e.preventDefault();
+              AuraApp.focusScreenerSearch();
+            }
+            if (e.key === 'Escape') {
+              AuraApp.closeModals();
+            }
+          });
+        },
+
+        changeCurrency: function(curr) {
+          if (!currencies[curr]) return;
+          state.currency = curr;
+          state.currencyMultiplier = currencies[curr].rate;
+          state.currencySymbol = currencies[curr].symbol;
+          
+          renderIndices();
+          renderScreener();
+          renderPortfolioVisuals();
+
+          AuraApp.showToast(`Active Currency set to ${curr} (${currencies[curr].symbol})`);
+        },
+
+        changeTimeframe: function(tf, btn) {
+          state.currentTimeframe = tf;
+          document.querySelectorAll('.market-timeframe-controls .btn-tf').forEach(b => b.classList.remove('active'));
+          if (btn) btn.classList.add('active');
+          renderIndices();
+          AuraApp.showToast(`Market timeframe synced to: ${tf}`);
+        },
+
+        setPortfolioChartTf: function(tf, btn) {
+          state.portfolioChartTf = tf;
+          const parent = btn.parentElement;
+          parent.querySelectorAll('.btn-tf').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          renderPortfolioLineChart();
+        },
+
+        filterSector: function(sector, btn) {
+          state.activeSector = sector;
+          document.querySelectorAll('#sectorFilterTabs .sector-tab').forEach(t => t.classList.remove('active'));
+          if (btn) btn.classList.add('active');
+          renderScreener();
+        },
+
+        handleSearch: function(val) {
+          state.searchQuery = val;
+          renderScreener();
+        },
+
+        focusScreenerSearch: function() {
+          const input = document.getElementById('screenerSearch');
+          if (input) {
+            input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(() => input.focus(), 300);
+          }
+        },
+
+        sortTable: function(col) {
+          if (state.sortColumn === col) {
+            state.sortDirection = state.sortDirection === 'asc' ? 'desc' : 'asc';
+          } else {
+            state.sortColumn = col;
+            state.sortDirection = 'desc';
+          }
+          renderScreener();
+        },
+
+        toggleWatchlist: function(symbol) {
+          const idx = state.watchlist.indexOf(symbol);
+          if (idx >= 0) {
+            state.watchlist.splice(idx, 1);
+            AuraApp.showToast(`Removed ${symbol} from Watchlist`);
+          } else {
+            state.watchlist.push(symbol);
+            AuraApp.showToast(`Added ${symbol} to Sovereign Watchlist`);
+          }
+          localStorage.setItem('aura_watchlist', JSON.stringify(state.watchlist));
+          renderScreener();
+        },
+
+        toggleLiveSimulation: function() {
+          state.isLiveSimulating = !state.isLiveSimulating;
+          const btn = document.getElementById('btnLiveToggle');
+          const dot = document.getElementById('liveDot');
+          const text = document.getElementById('liveStatusText');
+
+          if (state.isLiveSimulating) {
+            btn.classList.add('active');
+            dot.style.backgroundColor = '#38D394';
+            text.textContent = 'Live Feed: Active';
+            AuraApp.showToast('Live Institutional Feed Resumed');
+          } else {
+            btn.classList.remove('active');
+            dot.style.backgroundColor = '#A39B95';
+            text.textContent = 'Live Feed: Paused';
+            AuraApp.showToast('Live Institutional Feed Suspended');
+          }
+        },
+
+        switchStrategy: function(strategyKey, btn) {
+          state.portfolioStrategy = strategyKey;
+          document.querySelectorAll('.portfolio-strategy-selector .btn-strategy').forEach(b => b.classList.remove('active'));
+          if (btn) btn.classList.add('active');
+          renderPortfolioVisuals();
+        },
+
+        highlightDonutSlice: function(name, pct, element) {
+          document.getElementById('donutHighlightPct').textContent = pct + '%';
+          document.getElementById('donutHighlightName').textContent = name.split(' ')[0];
+          if (element) {
+            element.setAttribute('stroke-width', '28');
+          }
+        },
+
+        resetDonutSlice: function(element) {
+          if (element) {
+            element.setAttribute('stroke-width', '24');
+          }
+        },
+
+        inspectAsset: function(symbol) {
+          const asset = equities.find(e => e.symbol === symbol);
+          if (!asset) return;
+
+          const modalBody = document.getElementById('assetModalBody');
+          const isPos = asset.changePct >= 0;
+          const displayPrice = formatMoney(asset.currentPrice);
+
+          modalBody.innerHTML = `
+            <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 24px; border-bottom: 1px solid var(--border-refined); padding-bottom: 20px;">
+              <div style="display: flex; align-items: center; gap: 16px;">
+                <div class="asset-avatar" style="width: 48px; height: 48px; font-size: 1.25rem;">${asset.avatarText}</div>
+                <div>
+                  <div style="font-family: var(--font-mono); font-size: 0.8125rem; color: var(--gold-700); font-weight: 600;">${asset.symbol} • ${asset.sectorLabel}</div>
+                  <h2 style="font-family: var(--font-serif); font-size: 1.85rem; color: var(--plum-900); font-weight: 600;">${asset.name}</h2>
+                </div>
+              </div>
+              <div style="text-align: right;">
+                <div style="font-family: var(--font-mono); font-size: 1.75rem; font-weight: 600; color: var(--text-heading);">${displayPrice}</div>
+                <span class="badge-change ${isPos ? 'positive' : 'negative'}">${isPos ? '+' : ''}${asset.changePct.toFixed(2)}% (24h)</span>
+              </div>
+            </div>
+
+            <!-- Quantitative & Valuation Metrics Grid -->
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 24px;">
+              <div class="metric-subcard">
+                <div class="metric-title">Market Cap</div>
+                <div class="metric-val" style="font-size: 1.1rem;">${formatMarketCap(asset.mcap)}</div>
+              </div>
+              <div class="metric-subcard">
+                <div class="metric-title">P/E Multiple</div>
+                <div class="metric-val" style="font-size: 1.1rem;">${asset.pe.toFixed(1)}x</div>
+              </div>
+              <div class="metric-subcard">
+                <div class="metric-title">Div. Yield</div>
+                <div class="metric-val" style="font-size: 1.1rem;">${asset.divYield}</div>
+              </div>
+              <div class="metric-subcard">
+                <div class="metric-title">Aura Score</div>
+                <div class="metric-val" style="font-size: 1.1rem; color: var(--gold-700);">${asset.auraScore}/100</div>
+              </div>
+            </div>
+
+            <!-- Executive Stewardship Thesis -->
+            <div style="background: var(--bg-surface-alt); border-radius: var(--radius-md); padding: 20px; border: 1px solid var(--border-gold); margin-bottom: 24px;">
+              <div style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-700); margin-bottom: 6px;">Proprietary Investment Thesis</div>
+              <p style="font-size: 0.9375rem; line-height: 1.6; color: var(--text-body);">${asset.thesis}</p>
+            </div>
+
+            <div style="display: flex; gap: 14px; justify-content: flex-end;">
+              <button class="btn-hero-secondary" onclick="AuraApp.toggleWatchlist('${asset.symbol}'); AuraApp.closeModals();" style="padding: 10px 20px;">
+                ${state.watchlist.includes(asset.symbol) ? 'Remove Watchlist' : 'Add to Watchlist'}
+              </button>
+              <button class="btn-portal" onclick="AuraApp.simulateAllocation('${asset.symbol}');" style="padding: 10px 24px;">
+                Simulate Allocation
+              </button>
+            </div>
+          `;
+
+          document.getElementById('assetDetailModal').classList.add('open');
+        },
+
+        simulateAllocation: function(symbol) {
+          AuraApp.closeModals();
+          AuraApp.showToast(`Simulated +$500,000 USD Allocation in ${symbol} into Sovereign Mandate.`);
+          setTimeout(() => {
+            document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' });
+          }, 300);
+        },
+
+        showIndexDetail: function(symbol) {
+          const index = indices.find(i => i.symbol === symbol);
+          if (index) {
+            AuraApp.showToast(`Loaded live tick depth for ${index.name}`);
+          }
+        },
+
+        openPortalModal: function() {
+          document.getElementById('portalModal').classList.add('open');
+        },
+
+        openAdvisoryModal: function() {
+          document.getElementById('advisoryModal').classList.add('open');
+        },
+
+        openArticleModal: function(idx) {
+          const article = articles[idx];
+          if (!article) return;
+          const container = document.getElementById('articleModalContent');
+          container.innerHTML = `
+            <div style="margin-bottom: 20px;">
+              <span class="editorial-tag" style="margin-bottom: 12px; display: inline-block;">${article.tag}</span>
+              <h2 style="font-family: var(--font-serif); font-size: 2.1rem; line-height: 1.2; color: var(--plum-900);">${article.title}</h2>
+              <div style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 10px;">
+                By ${article.author} • ${article.date} (${article.readTime})
+              </div>
+            </div>
+            <div style="border-top: 1px solid var(--border-refined); padding-top: 20px;">
+              ${article.body}
+            </div>
+          `;
+          document.getElementById('articleModal').classList.add('open');
+        },
+
+        closeModals: function() {
+          document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('open'));
+        },
+
+        handlePortalLogin: function(e) {
+          e.preventDefault();
+          AuraApp.closeModals();
+          AuraApp.showToast('Authentication Successful. Welcome, Sovereign Client.');
+        },
+
+        quickDemoLogin: function() {
+          AuraApp.closeModals();
+          AuraApp.showToast('Verified via Guest Token. Full VIP Analytics Unlocked.');
+          document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' });
+        },
+
+        handleAdvisorySubmit: function(e) {
+          e.preventDefault();
+          AuraApp.closeModals();
+          AuraApp.showToast('Inquiry received. A senior partner will contact your office within 4 hours.');
+        },
+
+        handleNewsletter: function(e) {
+          e.preventDefault();
+          e.target.reset();
+          AuraApp.showToast('Subscribed to The Sovereign Dispatch.');
+        },
+
+        toggleMobileMenu: function() {
+          const nav = document.querySelector('.nav-links');
+          if (nav.style.display === 'flex') {
+            nav.style.display = 'none';
+          } else {
+            nav.style.display = 'flex';
+            nav.style.flexDirection = 'column';
+            nav.style.position = 'absolute';
+            nav.style.top = '78px';
+            nav.style.left = '0';
+            nav.style.width = '100%';
+            nav.style.background = '#FFFFFF';
+            nav.style.padding = '24px';
+            nav.style.boxShadow = 'var(--shadow-md)';
+          }
+        },
+
+        showToast: function(message) {
+          const container = document.getElementById('toastContainer');
+          const toast = document.createElement('div');
+          toast.className = 'toast-msg';
+          toast.innerHTML = `
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold-500)" stroke-width="2.5">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>${message}</span>
+          `;
+          container.appendChild(toast);
+          setTimeout(() => {
+            toast.style.opacity = '0';
+            toast.style.transform = 'translateY(10px)';
+            toast.style.transition = 'all 0.3s ease';
+            setTimeout(() => toast.remove(), 300);
+          }, 3500);
+        }
+      };
+    })();
+
+    // Initialize when DOM is ready
+    document.addEventListener('DOMContentLoaded', AuraApp.init);
+  </script>
+</body>
+</html>
